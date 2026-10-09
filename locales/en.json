@@ -101,7 +101,117 @@
   },
   "quiz": {
     "title": "Quiz",
-    "stageNote": "The quiz flow will be built in an upcoming stage."
+    "back": "Back",
+    "next": "Next",
+    "progress": "Step {step} of {total}",
+    "step1": {
+      "title": "What pet do you have?",
+      "species": { "dog": "Dog", "cat": "Cat" },
+      "petName": "Pet's name (optional)"
+    },
+    "step2": {
+      "title": "Which city are you in?",
+      "otherCityLabel": "Enter your city"
+    },
+    "step3": {
+      "title": "Age, weight, and breed",
+      "ageBand": { "under1": "Under 1 year", "1to7": "1 to 7 years", "over7": "Over 7 years" },
+      "weight": "Weight, kg",
+      "breed": "Breed (optional)",
+      "breedMixed": "Mixed breed",
+      "breedUnknown": "Don't know"
+    },
+    "step4": {
+      "title": "Activity and current food",
+      "activity": { "low": "Low", "medium": "Medium", "high": "High" },
+      "currentFood": {
+        "dry": "Dry food",
+        "wet": "Wet food",
+        "homeCooked": "Home-cooked food",
+        "mixed": "Mixed diet",
+        "other": "Other"
+      }
+    },
+    "step5": {
+      "title": "Ingredient reactions",
+      "excludedLabel": "Known ingredient reactions",
+      "excluded": {
+        "chicken": "Chicken",
+        "turkey": "Turkey",
+        "beef": "Beef",
+        "fish": "Fish",
+        "other": "Other",
+        "none": "No known reactions",
+        "unknown": "Don't know"
+      },
+      "otherReaction": "Describe the reaction",
+      "specialDietQuestion": "Has a vet prescribed a special diet?",
+      "specialDiet": { "yes": "Yes", "no": "No", "unknown": "Don't know" }
+    },
+    "step6": {
+      "title": "Menu preferences",
+      "recipesLabel": "Pick concepts you're interested in (optional)",
+      "planTypeLabel": "What do you need?",
+      "planType": { "full": "Full diet", "supplement": "Supplement to current food", "help": "Need guidance" },
+      "frequencyLabel": "Preferred delivery frequency",
+      "frequency": { "weekly": "Weekly", "biweekly": "Every two weeks", "monthly": "Monthly", "unsure": "Not sure yet" }
+    },
+    "step7": {
+      "title": "Budget and readiness",
+      "budgetLabel": "Current monthly spend on food, GEL (optional)",
+      "budgetUnknown": "Don't know",
+      "subscriptionQuestion": "Would you consider a subscription?",
+      "subscription": { "yes": "Yes", "maybe": "Maybe", "no": "No" }
+    },
+    "step8": {
+      "title": "Preliminary offer",
+      "consultationNeeded": "Diet needs to be checked with a specialist",
+      "consultationBody": "Based on your answers, exact suitability is better discussed separately. We'll pass these details on to the operator.",
+      "possibleOptions": "Possible options to discuss:",
+      "recommendedTitle": "Preliminarily suitable concepts:",
+      "noMatches": "None of the current concepts fit your answers yet — we'll discuss food separately.",
+      "conceptCaveat": "Recipe concept. Composition and availability are confirmed before launch.",
+      "pricePrefix": "Preliminary test price: {price} GEL/month; final terms confirmed before launch.",
+      "priceQuestion": "Would you consider this at this price?",
+      "price": { "yes": "Yes", "maybe": "Maybe", "no": "No" },
+      "noPriceYet": "We'll discuss the cost after the quiz."
+    },
+    "step9": {
+      "title": "Contact details",
+      "ownerName": "Your name (optional)",
+      "phone": "Phone",
+      "phoneInvalid": "Check the phone number",
+      "channel": "Preferred contact method",
+      "channels": { "whatsapp": "WhatsApp", "telegram": "Telegram", "call": "Call" },
+      "telegramUsername": "Telegram {'@'}username (optional)",
+      "telegramInvalid": "Check the Telegram username",
+      "contactConsent": "I agree to processing this request and being contacted on the details provided",
+      "marketingConsent": "I agree to receive news and offers (optional)",
+      "submit": "Leave a subscription request",
+      "notConnectedYet": "Submitting requests will be wired up in the next development stage."
+    }
+  },
+  "cities": {
+    "tbilisi": "Tbilisi",
+    "batumi": "Batumi",
+    "kutaisi": "Kutaisi",
+    "rustavi": "Rustavi",
+    "gori": "Gori",
+    "zugdidi": "Zugdidi",
+    "poti": "Poti",
+    "telavi": "Telavi",
+    "akhaltsikhe": "Akhaltsikhe",
+    "other": "Other city"
+  },
+  "validation": {
+    "required": "Fill in this field",
+    "maxLength": "Text is too long",
+    "otherCity": "Enter a city (2–80 characters)",
+    "weightNumber": "Enter weight as a number",
+    "weightRange": "Check the weight — looks like a typo",
+    "excludedExclusive": "\"No known reactions\" and \"Don't know\" can't be combined with other options",
+    "budgetNumber": "Enter an amount of 0 or more",
+    "consentRequired": "Consent is required to continue"
   },
   "thankYou": {
     "title": "Thank you for your request",

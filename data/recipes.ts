@@ -1,15 +1,6 @@
-export type Species = 'dog' | 'cat'
-export type ConceptProtein = 'chicken' | 'turkey' | 'beef' | 'fish'
+import type { ConceptProtein, Recipe, Species } from '~~/shared/types/recipe'
 
-export interface Recipe {
-  id: string
-  species: Species
-  translationKey: string
-  conceptProtein: ConceptProtein
-  image: string
-  imageAltKey: string
-  status: 'concept'
-}
+export type { ConceptProtein, Recipe, Species }
 
 // Six marketing concepts, not production formulas — see .cursorrules.txt section 5.
 // Content (title/description/alt) lives in locales/*.json under `recipes.<id>`.
