@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/*
+ * Brand tokens (Stage 1 foundation only — see .cursorrules.txt section 4):
+ * warm light background, graphite text, a single green accent, soft cards.
+ * Stage 2 will consume these tokens when building the real landing sections.
+ */
+@theme {
+  --color-brand-bg: #fbf6ee;
+  --color-brand-surface: #ffffff;
+  --color-brand-text: #2e2c28;
+  --color-brand-text-muted: #6b675f;
+  --color-brand-accent: #3f7d52;
+  --color-brand-accent-strong: #2f5f3e;
+  --color-brand-border: #e7ddc9;
+
+  --font-sans-ka: "Noto Sans Georgian", "Noto Sans", system-ui, sans-serif;
+  --font-sans-default: "Noto Sans", system-ui, sans-serif;
+}
+
+html,
+body {
+  background-color: var(--color-brand-bg);
+  color: var(--color-brand-text);
+  font-family: var(--font-sans-default);
+}
+
+:lang(ka) {
+  font-family: var(--font-sans-ka);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

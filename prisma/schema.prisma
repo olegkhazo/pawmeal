@@ -1,0 +1,11 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Lead / LeadActivity models are added in Stage 4 ("реальные заявки"),
+// once the lead schema (.cursorrules.txt section 8) is implemented end to end.

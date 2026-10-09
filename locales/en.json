@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "howItWorks": "How it works",
+    "menu": "Menu",
+    "faq": "FAQ",
+    "cta": "Take the quiz"
+  },
+  "disclaimer": "We're preparing to launch delivery in Georgia. Leave a request — we'll discuss the food, cost, and availability in your city. No payment is required right now.",
+  "home": {
+    "title": "Food for your pet — with regular delivery",
+    "stageNote": "Page in progress: the full landing page lands in the next build stage."
+  },
+  "footer": {
+    "privacyLink": "Privacy Policy"
+  },
+  "quiz": {
+    "title": "Quiz",
+    "stageNote": "The quiz flow will be built in an upcoming stage."
+  },
+  "thankYou": {
+    "title": "Thank you for your request",
+    "stageNote": "This page will be completed once lead saving is implemented."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "stageNote": "The full policy text will be added later, with the operator's real contact details."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "message": "Check the address or go back to the homepage.",
+    "backHome": "Back to home"
+  },
+  "meta": {
+    "defaultTitle": "PawMeal Georgia",
+    "defaultDescription": "Preparing to launch fresh-cooked meal delivery for dogs and cats in Georgia."
+  }
+}
