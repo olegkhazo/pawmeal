@@ -35,6 +35,8 @@ npm run test        # vitest run — unit tests in tests/unit
 npm run test:e2e    # playwright test — e2e tests in tests/e2e (starts the dev server itself)
 ```
 
+`test:e2e` needs the Playwright browser binaries once per machine: `npx playwright install chromium`.
+
 ## Database / Prisma
 
 ```bash
@@ -75,7 +77,8 @@ Production startup should validate that the required variables above are actuall
 - **Node engine warnings on this machine:** several current packages (Nuxt 4.6, Nitro, Vite 8, some PostCSS plugins) declare `engines.node >= 22.21/22.22`, while this machine runs Node v22.14.0. `npm install` prints `EBADENGINE` warnings for these, but `dev`/`build`/`typecheck`/`lint`/`test` all run successfully on v22.14.0 in this project as verified during Stage 1. If something odd ever shows up that isn't explained elsewhere, upgrading Node to 22.21+ (or latest LTS) is the first thing to try.
 - **Windows SSR workaround:** `nuxt.config.ts` sets `nitro.externals.inline` to bundle the renderer. This works around a confirmed Nuxt 4.6.0-on-Windows bug ([nuxt/nuxt#36467](https://github.com/nuxt/nuxt/issues/36467)) where every SSR page 500s with "Either manifest or precomputed data must be provided". Remove this workaround once upstream ships a fix in a later Nuxt patch release.
 - `npm audit` currently reports transitive advisories (via Prisma's bundled `mysql2` support for non-Postgres providers we don't use, and via Nitro's dev-only `node-forge`/`listhen` HTTPS dev-cert tooling). The suggested `npm audit fix --force` would downgrade Nuxt and Prisma to old major versions, which would undo the Stage 0 "use current stable majors" decision — not applied. Revisit if a non-breaking fix becomes available.
-- Local PostgreSQL via `docker compose up -d` was not run end-to-end in the environment this project was scaffolded in (Docker Desktop's daemon was not running there). The compose file and Prisma wiring are in place and `prisma generate` works without a live DB; verify `docker compose up -d` + `npm run db:migrate` once Docker is available, and definitely before Stage 4.
+- Local PostgreSQL via `docker compose up -d` was not run end-to-end in the environment this project was scaffolded in (Docker Desktop's daemon kept hanging on startup there). The compose file and Prisma wiring are in place and `prisma generate` works without a live DB; verify `docker compose up -d` + `npm run db:migrate` once Docker is available, and definitely before Stage 4.
+- Product/hero images under `public/images/**` are temporary SVG placeholders (clearly labeled "placeholder — concept photo pending"), not real photography or AI-rendered concepts — see `docs/image-prompts.md` for the brief and manifest to replace them before launch.
 
 ## Project status
 

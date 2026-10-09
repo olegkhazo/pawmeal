@@ -7,8 +7,94 @@
   },
   "disclaimer": "We're preparing to launch delivery in Georgia. Leave a request — we'll discuss the food, cost, and availability in your city. No payment is required right now.",
   "home": {
-    "title": "Food for your pet — with regular delivery",
-    "stageNote": "Page in progress: the full landing page lands in the next build stage."
+    "hero": {
+      "title": "Food for your pet — with regular delivery",
+      "lead": "We're preparing portioned pouches of gently cooked food for dogs and cats in Georgia. Take a short quiz — we'll discuss recipes, schedule, and cost with you personally.",
+      "speciesDog": "For a dog",
+      "speciesCat": "For a cat"
+    },
+    "value": {
+      "items": [
+        "Portioned pouches that are easy to store and use",
+        "Several menu concepts for dogs and cats — pick a starting point, refine it later",
+        "Delivery schedule and conditions discussed with you personally, for your city"
+      ]
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "steps": [
+        { "title": "Quiz", "description": "Tell us about your pet: species, age, weight, feeding details." },
+        { "title": "Preliminary pick", "description": "We suggest menu concepts that fit your answers." },
+        { "title": "Talk with an operator", "description": "We'll reach out on WhatsApp, Telegram, or by phone to go over the details." },
+        { "title": "Pilot delivery agreed", "description": "We'll agree on a trial delivery if everything fits." }
+      ]
+    },
+    "catalog": {
+      "title": "Menu",
+      "filterAll": "All",
+      "filterDog": "For dogs",
+      "filterCat": "For cats",
+      "conceptNote": "Recipe concept. Composition and availability are confirmed before launch.",
+      "galleryNote": "Visualization of future packaging.",
+      "productCta": "Pick as a preference"
+    },
+    "subscription": {
+      "title": "Subscription format",
+      "body": "Delivery frequency, pouch size, and cost will be agreed individually before the pilot launches in your city.",
+      "note": "Pause and cancel features arrive at launch — right now we're collecting requests to gauge interest."
+    },
+    "packaging": {
+      "title": "Packaging and storage",
+      "body": "Food is packed in portioned pouches. We'll confirm the exact storage mode and timeframes together with the composition and delivery conditions."
+    },
+    "finalCta": {
+      "title": "Ready to talk about food for your pet?",
+      "button": "Leave a subscription request"
+    }
+  },
+  "recipes": {
+    "dog-chicken": {
+      "title": "Chicken for dogs",
+      "description": "A chicken-based menu concept for dogs.",
+      "alt": "Packaging concept: chicken for dogs (visualization, not a final photo)"
+    },
+    "dog-turkey": {
+      "title": "Turkey for dogs",
+      "description": "A turkey-based menu concept for dogs.",
+      "alt": "Packaging concept: turkey for dogs (visualization, not a final photo)"
+    },
+    "dog-beef": {
+      "title": "Beef for dogs",
+      "description": "A beef-based menu concept for dogs.",
+      "alt": "Packaging concept: beef for dogs (visualization, not a final photo)"
+    },
+    "cat-chicken": {
+      "title": "Chicken for cats",
+      "description": "A chicken-based menu concept for cats.",
+      "alt": "Packaging concept: chicken for cats (visualization, not a final photo)"
+    },
+    "cat-turkey": {
+      "title": "Turkey for cats",
+      "description": "A turkey-based menu concept for cats.",
+      "alt": "Packaging concept: turkey for cats (visualization, not a final photo)"
+    },
+    "cat-fish": {
+      "title": "Fish for cats",
+      "description": "A fish-based menu concept for cats.",
+      "alt": "Packaging concept: fish for cats (visualization, not a final photo)"
+    }
+  },
+  "faq": {
+    "title": "FAQ",
+    "items": [
+      { "q": "Is this a running delivery service already?", "a": "No, we're preparing a pilot launch in Georgia and are currently collecting requests to gauge interest and demand." },
+      { "q": "Which cities will this be available in?", "a": "We plan to start with a few cities in Georgia. Leave a request from any city — we'll discuss availability with you personally." },
+      { "q": "How much will this cost?", "a": "We'll discuss the cost after the quiz." },
+      { "q": "How does payment work?", "a": "No payment is required during the pilot. We'll discuss payment terms once delivery is ready to launch." },
+      { "q": "Is this suitable for both dogs and cats?", "a": "Yes, we have separate concepts for dogs and for cats — you pick the species in the quiz." },
+      { "q": "How do I leave a request?", "a": "Take the short quiz on the site and leave your phone number — we'll reach out on WhatsApp, Telegram, or by phone." },
+      { "q": "What if my pet has special dietary needs?", "a": "Tell us in the quiz — we'll pass it on to the operator and check the diet with a specialist if needed." }
+    ]
   },
   "footer": {
     "privacyLink": "Privacy Policy"
