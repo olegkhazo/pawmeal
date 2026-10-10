@@ -15,7 +15,7 @@ function onSelect(species: Species) {
 </script>
 
 <template>
-  <div class="flex flex-col gap-3 sm:flex-row sm:justify-center">
+  <div class="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
     <NuxtLink
       :to="quizLink('dog')"
       class="rounded-full bg-brand-accent px-6 py-3 text-center text-sm font-medium text-white hover:bg-brand-accent-strong"

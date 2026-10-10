@@ -9,11 +9,11 @@ test('root redirects to the default ka locale', async ({ page }) => {
 test('ru and en routes render in their own language', async ({ page }) => {
   await page.goto('/ru')
   await expect(page.locator('html')).toHaveAttribute('lang', 'ru-RU')
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Питание')
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Забота')
 
   await page.goto('/en')
   await expect(page.locator('html')).toHaveAttribute('lang', 'en-US')
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Food')
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Care')
 })
 
 test('language switcher in the header moves between locales', async ({ page }) => {

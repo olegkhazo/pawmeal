@@ -21,28 +21,32 @@ Notes:
 - `recipes.<id>.alt` in `locales/*.json` now describes each image honestly as an ingredient photo ("Фото ингредиента, не упаковки" / "Ingredient photo, not packaging" / ქართულად შესაბამისად), not a packaging visualization. The catalog's `home.catalog.galleryNote` caption was updated the same way.
 - The CC BY-SA 2.5 beef photo's attribution lives in the site footer, visible on every page — not just in this doc — per the license's actual requirement.
 
-## Hero image — original brief (not changed by this update)
+## Hero image (2026-10-10 update)
 
-The hero composition (`public/images/hero/hero-desktop.svg`, `hero-mobile.svg`) is still the original labeled SVG placeholder from Stage 2 — the owner's request was specifically about the product cards, not the hero. The original packaging-concept brief below still applies whenever real hero photography/renders are produced.
+The owner asked for a two-column hero layout (CTA on the left, a photo of a cat and a dog sitting together on the right), styled after the structural layout of foodforjoe.es's hero (left CTA / right pet image) — not a pixel copy of their design, just the same two-column idea, which is a generic layout pattern anyway. foodforjoe.es was not actually reachable by the fetch tool in this session (same as in Stage 0 — likely a client-rendered SPA), so this was built from the owner's description, not a direct look at the reference.
 
-### Common prompt (original packaging-concept brief, superseded for product cards by the table above)
+This replaces the original SVG "pouches + bowl" placeholder entirely — `HeroSection.vue` now renders a single real photo, not separate desktop/mobile crops via `<picture>`.
 
-> Photorealistic premium pet food concept product photography, unbranded sealed flat food pouch with subtle transparent window showing gently cooked food, warm ivory studio background, soft natural shadows, minimal muted green label area left blank for later typography, matching product family, realistic food texture, no logos, no readable text, no medical badges, no hands, no watermark. Product is a packaging concept, not an existing certified product.
+| Asset | File | Source | License | Attribution required? |
+|---|---|---|---|---|
+| Hero (cat + dog) | `public/images/hero/cat-and-dog.jpg` | [Pexels — photo by Helena Jankovičová Kováčová](https://www.pexels.com/photo/16395150/) | Pexels License | No (credited here anyway as a courtesy) |
 
-This prompt is kept here for whenever actual sealed-pouch packaging photography/renders are produced later (e.g. once real packaging design exists) — it no longer describes what the product cards currently show.
+Notes:
+- Downloaded at 1600×1065 (Pexels' own resize query param, `?w=1600`) rather than the ~4100px original — keeps the file around 175 KB instead of ~1.6 MB, since this image loads eagerly above the fold and directly affects LCP.
+- A Bengal-pattern cat and a Yorkshire terrier, both upright (cat sitting, dog in an alert half-stand) side by side on a shelf by a window — close enough to "sitting next to each other" to match the ask; a photo with both animals in a strict seated pose and this level of photo quality, brand-appropriate lighting, and a genuinely free license was not found after a reasonably thorough search.
+- Used as a single image at a `4/3` object-cover aspect ratio for both the right-column desktop layout and the stacked-above-text mobile layout — not separate crops. `alt` text is now descriptive (`home.hero.imageAlt`, all 3 locales) since this is real photo content, not decorative.
 
-### Hero prompt
+### Superseded — original packaging-concept hero brief
+
+The hero no longer uses the sealed-pouch "packaging concept" composition described below. Kept only in case the owner wants that direction again later (e.g. once real packaging design exists) — it does not describe the current hero image.
 
 > Composition of several unbranded sealed flat food pouches (same style as the product shots) arranged next to a simple pet bowl, warm ivory studio background, soft natural shadows, empty space reserved at the top for a headline, no logos, no readable text, no people, no watermark. Packaging concept, not an existing certified product.
 
-Needs two crops: desktop 16:9 and a separate mobile 4:5 crop (not just a scaled-down version — recompose so the subject stays legible in portrait).
+### Superseded — original product-card packaging-concept brief
 
-| Asset | File (current placeholder) | Target formats | Status |
-|---|---|---|---|
-| Hero (desktop) | `public/images/hero/hero-desktop.svg` | 16:9, source + AVIF/WebP | **placeholder** |
-| Hero (mobile) | `public/images/hero/hero-mobile.svg` | 4:5, source + AVIF/WebP | **placeholder** |
+> Photorealistic premium pet food concept product photography, unbranded sealed flat food pouch with subtle transparent window showing gently cooked food, warm ivory studio background, soft natural shadows, minimal muted green label area left blank for later typography, matching product family, realistic food texture, no logos, no readable text, no medical badges, no hands, no watermark. Product is a packaging concept, not an existing certified product.
 
 ## Still not done
 
-- No hero photography/renders — still an SVG placeholder.
-- Product-card images are real ingredient photos now, but not yet optimized (AVIF/WebP, consistent resolution) or replaced with actual sealed-pouch packaging photography of the real product, if the owner wants that later instead.
+- No sealed-pouch packaging photography/renders of the actual product — both the hero and the product cards currently show real but unbranded stock photography (pets, ingredients), not the product itself, since there is no real packaging yet.
+- Product-card images are real ingredient photos now, but not yet optimized (AVIF/WebP, consistent resolution).
