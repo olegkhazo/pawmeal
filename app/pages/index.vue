@@ -88,6 +88,8 @@ const filters: { value: Filter; labelKey: string }[] = [
 
     <FaqSection />
 
+    <TestimonialsSection />
+
     <section class="mx-auto max-w-2xl px-4 py-16 text-center">
       <h2 class="text-2xl font-semibold text-brand-text sm:text-3xl">
         {{ t('home.finalCta.title') }}

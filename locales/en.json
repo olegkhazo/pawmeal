@@ -50,6 +50,27 @@
       "title": "Packaging and storage",
       "body": "Food is packed in portioned pouches. We'll confirm the exact storage mode and timeframes together with the composition and delivery conditions."
     },
+    "testimonials": {
+      "title": "What we're hearing so far",
+      "draftNote": "Draft: real pilot participants' reviews will go here.",
+      "items": [
+        {
+          "quote": "The quiz took just a couple of minutes — I liked that they asked about my cat's specific needs instead of just pushing a ready-made plan.",
+          "name": "Nino",
+          "city": "Tbilisi"
+        },
+        {
+          "quote": "I've been looking for an alternative to dry food for my dog. Nice that you can actually discuss the composition instead of buying blind.",
+          "name": "Aleksandra",
+          "city": "Batumi"
+        },
+        {
+          "quote": "Nice that I could answer the quiz in Georgian or Russian. Looking forward to the first delivery.",
+          "name": "Giorgi",
+          "city": "Kutaisi"
+        }
+      ]
+    },
     "finalCta": {
       "title": "Ready to talk about food for your pet?",
       "button": "Leave a subscription request"
