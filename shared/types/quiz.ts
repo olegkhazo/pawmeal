@@ -78,6 +78,8 @@ export interface QuizContactAnswers {
   telegramUsername: string
   contactConsent: boolean
   marketingConsent: boolean
+  // Honeypot — a real visitor never sees or fills this field. See ContactForm.vue.
+  website: string
 }
 
 export function createEmptyContactAnswers(): QuizContactAnswers {
@@ -88,6 +90,7 @@ export function createEmptyContactAnswers(): QuizContactAnswers {
     telegramUsername: '',
     contactConsent: false,
     marketingConsent: false,
+    website: '',
   }
 }
 

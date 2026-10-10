@@ -41,6 +41,10 @@ export function useQuiz() {
   // Contact fields never touch sessionStorage — see shared/types/quiz.ts.
   const contact = useState<QuizContactAnswers>('quiz-contact', () => createEmptyContactAnswers())
   const hydrated = useState<boolean>('quiz-hydrated', () => false)
+  // One id per submission attempt; a network retry on the same attempt must
+  // reuse it (see server/services/leads.ts idempotency lookup). Only reset
+  // when the user starts a genuinely new quiz (clearDraft).
+  const clientRequestId = useState<string>('quiz-client-request-id', () => crypto.randomUUID())
 
   function hydrateFromStorageOrQuery(query: Record<string, unknown>) {
     if (hydrated.value) return
@@ -93,7 +97,18 @@ export function useQuiz() {
     answers.value = createEmptyDraftAnswers()
     contact.value = createEmptyContactAnswers()
     hydrated.value = false
+    clientRequestId.value = crypto.randomUUID()
   }
 
-  return { step, answers, contact, hydrateFromStorageOrQuery, persist, goNext, goBack, clearDraft }
+  return {
+    step,
+    answers,
+    contact,
+    clientRequestId,
+    hydrateFromStorageOrQuery,
+    persist,
+    goNext,
+    goBack,
+    clearDraft,
+  }
 }

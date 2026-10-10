@@ -188,7 +188,16 @@
       "contactConsent": "I agree to processing this request and being contacted on the details provided",
       "marketingConsent": "I agree to receive news and offers (optional)",
       "submit": "Leave a subscription request",
-      "notConnectedYet": "Submitting requests will be wired up in the next development stage."
+      "submitting": "Submitting...",
+      "errors": {
+        "validation_error": "Check the fields you filled in and try again.",
+        "invalid_phone": "Check the phone number.",
+        "rate_limited": "Too many attempts in a row. Wait a moment and try again.",
+        "payload_too_large": "The request was too large. Please try again.",
+        "origin_rejected": "Couldn't submit from this page. Refresh the page and try again.",
+        "db_unavailable": "Couldn't save the request. Please try again in a minute.",
+        "network_error": "Couldn't submit the request. Check your connection and try again."
+      }
     }
   },
   "cities": {
@@ -215,7 +224,10 @@
   },
   "thankYou": {
     "title": "Thank you for your request",
-    "stageNote": "This page will be completed once lead saving is implemented."
+    "saved": "We've received your request and will reach out soon.",
+    "reference": "Request reference: {id}",
+    "messengerStageNote": "WhatsApp and Telegram buttons will be added in the next development stage.",
+    "noReference": "This page only opens after submitting the quiz."
   },
   "privacy": {
     "title": "Privacy Policy",

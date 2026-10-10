@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { CITY_IDS } from '~~/data/cities'
 
-const cityIdSchema = z.enum(CITY_IDS)
+export const cityIdSchema = z.enum(CITY_IDS)
 
 export const step1Schema = z.object({
   species: z.enum(['dog', 'cat'], { error: 'validation.required' }),
@@ -23,7 +23,7 @@ export const step2Schema = z
   })
 
 // Sanity bounds only — a segmentation guardrail, not a clinical/veterinary limit.
-const WEIGHT_BOUNDS: Record<'dog' | 'cat', { min: number; max: number }> = {
+export const WEIGHT_BOUNDS: Record<'dog' | 'cat', { min: number; max: number }> = {
   dog: { min: 0.5, max: 90 },
   cat: { min: 0.5, max: 15 },
 }
@@ -49,7 +49,7 @@ export const step4Schema = z.object({
   currentFood: z.enum(['dry', 'wet', 'homeCooked', 'mixed', 'other'], { error: 'validation.required' }),
 })
 
-const excludedProteinSchema = z.enum(['chicken', 'turkey', 'beef', 'fish', 'other', 'none', 'unknown'])
+export const excludedProteinSchema = z.enum(['chicken', 'turkey', 'beef', 'fish', 'other', 'none', 'unknown'])
 
 export const step5Schema = z
   .object({
@@ -93,7 +93,7 @@ export const step8Schema = z.object({
   priceInterest: z.enum(['yes', 'maybe', 'no']).nullable(),
 })
 
-const telegramUsernamePattern = /^@?[A-Za-z0-9_]{5,32}$/
+export const telegramUsernamePattern = /^@?[A-Za-z0-9_]{5,32}$/
 
 export const contactSchema = z.object({
   ownerName: z.string().max(80, { error: 'validation.maxLength' }).optional().or(z.literal('')),

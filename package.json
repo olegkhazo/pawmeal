@@ -13,7 +13,10 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "db:generate": "prisma generate",
-    "db:migrate": "prisma migrate dev"
+    "db:migrate": "prisma migrate dev",
+    "export-leads": "tsx scripts/export-leads.ts",
+    "delete-lead": "tsx scripts/delete-lead.ts",
+    "purge-expired-leads": "tsx scripts/purge-expired-leads.ts"
   },
   "dependencies": {
     "@nuxtjs/i18n": "^10.6.0",
@@ -39,6 +42,7 @@
     "happy-dom": "^20.14.5",
     "prisma": "^7.10.0",
     "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3",
     "vitest": "^5.0.3",
     "vue-tsc": "^3.3.12"

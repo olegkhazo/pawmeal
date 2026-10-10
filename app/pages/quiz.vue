@@ -16,11 +16,14 @@ import { isContactValid } from '~/utils/contactValidation'
 
 definePageMeta({ ssr: false })
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 useHead({ title: `${t('quiz.title')} — ${t('meta.defaultTitle')}` })
 
 const route = useRoute()
-const { step, answers, contact, hydrateFromStorageOrQuery, persist, goNext, goBack } = useQuiz()
+const localePath = useLocalePath()
+const { step, answers, contact, clientRequestId, hydrateFromStorageOrQuery, persist, goNext, goBack, clearDraft } =
+  useQuiz()
+const { submitting, submit } = useLeadSubmission()
 
 onMounted(() => {
   hydrateFromStorageOrQuery(route.query)
@@ -135,11 +138,30 @@ const cityLabel = computed(() => {
 
 // --- step 9 ---
 const step9Valid = computed(() => isContactValid(contact.value))
-const submitAttempted = ref(false)
+const submitErrorCode = ref<string | null>(null)
 
-function handleNext() {
+async function handleNext() {
   if (step.value === QUIZ_STEP_COUNT) {
-    submitAttempted.value = true
+    // Synchronous re-entrancy guard: a double-click fires two click events in
+    // the same tick, before Vue's reactive `disabled` binding can repaint.
+    if (submitting.value) return
+    submitErrorCode.value = null
+    const result = await submit(answers.value, contact.value, clientRequestId.value, {
+      locale: locale.value,
+      landingPath: route.path,
+      utmSource: route.query.utm_source,
+      utmMedium: route.query.utm_medium,
+      utmCampaign: route.query.utm_campaign,
+      utmContent: route.query.utm_content,
+      utmTerm: route.query.utm_term,
+      experimentVariant: route.query.experimentVariant,
+    })
+    if (result.success && result.leadId) {
+      clearDraft()
+      await navigateTo({ path: localePath('/thank-you'), query: { leadId: result.leadId } })
+    } else {
+      submitErrorCode.value = result.errorCode ?? 'network_error'
+    }
     return
   }
   goNext()
@@ -530,13 +552,15 @@ const currentStepValid = computed(() => {
     <QuizStep
       v-else-if="step === 9"
       :title="t('quiz.step9.title')"
-      :can-go-next="currentStepValid"
-      :next-label="t('quiz.step9.submit')"
+      :can-go-next="currentStepValid && !submitting"
+      :next-label="submitting ? t('quiz.step9.submitting') : t('quiz.step9.submit')"
       @back="goBack"
       @next="handleNext"
     >
       <ContactForm v-model="contact" />
-      <p v-if="submitAttempted" class="text-sm text-brand-text-muted" role="status">{{ t('quiz.step9.notConnectedYet') }}</p>
+      <p v-if="submitErrorCode" class="text-sm text-red-600" role="alert">
+        {{ t(`quiz.step9.errors.${submitErrorCode}`, t('quiz.step9.errors.network_error')) }}
+      </p>
     </QuizStep>
   </QuizShell>
 </template>

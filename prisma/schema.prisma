@@ -7,5 +7,105 @@ datasource db {
   provider = "postgresql"
 }
 
-// Lead / LeadActivity models are added in Stage 4 ("реальные заявки"),
-// once the lead schema (.cursorrules.txt section 8) is implemented end to end.
+// Field values for species/ageBand/activity/etc. are plain strings, not native
+// Postgres enums — they are validated once, at the API boundary, by the Zod
+// schemas in shared/schemas/lead.ts (which reuse shared/schemas/quiz.ts), so the
+// app-level string unions and the stored values always match exactly. See
+// .cursorrules.txt section 8 for the authoritative field list.
+model Lead {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  locale String
+
+  species  String
+  petName  String?
+  cityId   String
+  otherCity String?
+
+  ageBand  String
+  weightKg Float
+  breed    String?
+
+  activity    String
+  currentFood String
+
+  excludedProteins String[]
+  otherReaction    String?
+  specialDiet      String
+
+  preferredRecipeIds  String[]
+  planType            String
+  frequencyPreference String
+
+  monthlyBudgetGel     Float?
+  subscriptionInterest String
+
+  // Price experiment (section 11) — null until Stage 11 wires up server-side pricing.
+  priceExperimentId      String?
+  offeredMonthlyPriceGel Float?
+  priceInterest          String?
+
+  // Computed server-side at submission time from shared/utils/recommend.ts —
+  // never trusted from the client.
+  recommendedRecipeIds String[]
+  needsConsultation    Boolean
+
+  ownerName        String?
+  phoneE164        String
+  preferredChannel String
+  telegramUsername String?
+
+  contactConsentAt   DateTime
+  marketingConsentAt DateTime?
+  consentVersion     String
+  privacyVersion     String
+
+  utmSource    String?
+  utmMedium    String?
+  utmCampaign  String?
+  utmContent   String?
+  utmTerm      String?
+  landingPath  String?
+  // Origin only (scheme + host), never the full referrer URL — see section 8.
+  referrerOrigin    String?
+  experimentVariant String?
+
+  // One per submission attempt; retries resend the same value so a network
+  // retry/double-click returns the original success instead of duplicating.
+  clientRequestId String @unique
+
+  activities LeadActivity[]
+
+  @@index([createdAt])
+  @@index([cityId])
+  @@index([locale])
+}
+
+// Deliberately minimal — operator notes on an existing lead, not a copy of the
+// quiz answers. status is a plain string: "new" | "contacted" | "qualified" | "notInterested".
+model LeadActivity {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  leadId String
+  lead   Lead   @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  status          String  @default("new")
+  note            String?
+  selectedPackage String?
+
+  @@index([leadId])
+}
+
+// Backs the server-side rate limiter for POST /api/leads with storage that
+// survives a process restart (spec section 8 requires this not be in-memory
+// only). bucketKey is derived from the client IP; old rows are pruned by
+// scripts/purge-expired-leads alongside expired leads.
+model RateLimitHit {
+  id        String   @id @default(uuid())
+  bucketKey String
+  createdAt DateTime @default(now())
+
+  @@index([bucketKey, createdAt])
+}

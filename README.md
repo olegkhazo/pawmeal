@@ -46,7 +46,22 @@ npm run db:migrate     # prisma migrate dev — create/apply a migration (needs 
 
 The Prisma Client is generated into `./generated/prisma` (gitignored, regenerate it after `npm install`). The connection string lives in `.env` as `DATABASE_URL`; the Prisma CLI reads it via `prisma.config.ts`, and the app reads it via `server/utils/prisma.ts` (PostgreSQL driver adapter — Prisma ORM 7 requires an explicit adapter, no bundled query engine).
 
-As of Stage 1, `prisma/schema.prisma` only has the generator/datasource blocks — no models yet. The `Lead`/`LeadActivity` models land in Stage 4 together with the `/api/leads` endpoint; that stage is also where `db:migrate` gets its first real migration to run and where `scripts/export-leads`, `scripts/delete-lead`, and `scripts/purge-expired-leads` are added.
+`prisma/schema.prisma` has three models: `Lead` (the full quiz + contact submission, section 8 of the spec), `LeadActivity` (operator notes/status on a lead, intentionally not a copy of the quiz answers), and `RateLimitHit` (backs the DB-persisted rate limiter in `server/utils/rateLimit.ts` — not in-process memory, so it survives restarts). **No migration has been generated or applied yet** — `npm run db:migrate` needs a reachable `DATABASE_URL`, and the Docker Desktop daemon was unavailable for the entire session this schema was written in (see "Known issues" below). Run it yourself once Docker/Postgres is up:
+
+```bash
+docker compose up -d
+npm run db:migrate -- --name init
+```
+
+That creates `prisma/migrations/<timestamp>_init/` and applies it. `npx prisma validate` confirms the schema itself is syntactically correct without needing a live connection — that was run and passed.
+
+### Leads API and CLI scripts
+
+- `POST /api/leads` (`server/api/leads.post.ts`) validates the full submission with `shared/schemas/lead.ts` (server-side, independent of the client), enforces a body-size cap, checks `Origin` against `PUBLIC_SITE_URL` when present, rate-limits by IP, rejects a filled honeypot field with the same generic error as any other invalid payload, and is idempotent on `clientRequestId` (a retry with the same id returns the original `leadId` instead of creating a duplicate or doing a public lookup by phone). Every error path returns `{ errorCode }` and never logs the phone number, Telegram handle, free-text answers, or raw request body.
+- `recommendedRecipeIds`/`needsConsultation` are computed server-side from `shared/utils/recommend.ts` — the client's own preview on quiz step 8 is never trusted as the stored value.
+- `npm run export-leads -- --from=2026-01-01 --to=2026-12-31 --city=tbilisi --locale=ru --out=leads.csv` — CSV export with formula-injection guarding (a leading `=`, `+`, `-`, or `@` gets an escaping apostrophe). Server/CLI-only, no public route.
+- `npm run delete-lead -- --id=<leadId>` — deletes one lead (and its activities, via cascade).
+- `npm run purge-expired-leads` — deletes leads older than `DATA_RETENTION_DAYS` and prunes stale rate-limit rows. Intended to run on a schedule; not wired to a scheduler itself yet.
 
 ## Build / production preview
 
@@ -77,7 +92,7 @@ Production startup should validate that the required variables above are actuall
 - **Node engine warnings on this machine:** several current packages (Nuxt 4.6, Nitro, Vite 8, some PostCSS plugins) declare `engines.node >= 22.21/22.22`, while this machine runs Node v22.14.0. `npm install` prints `EBADENGINE` warnings for these, but `dev`/`build`/`typecheck`/`lint`/`test` all run successfully on v22.14.0 in this project as verified during Stage 1. If something odd ever shows up that isn't explained elsewhere, upgrading Node to 22.21+ (or latest LTS) is the first thing to try.
 - **Windows SSR workaround:** `nuxt.config.ts` sets `nitro.externals.inline` to bundle the renderer. This works around a confirmed Nuxt 4.6.0-on-Windows bug ([nuxt/nuxt#36467](https://github.com/nuxt/nuxt/issues/36467)) where every SSR page 500s with "Either manifest or precomputed data must be provided". Remove this workaround once upstream ships a fix in a later Nuxt patch release.
 - `npm audit` currently reports transitive advisories (via Prisma's bundled `mysql2` support for non-Postgres providers we don't use, and via Nitro's dev-only `node-forge`/`listhen` HTTPS dev-cert tooling). The suggested `npm audit fix --force` would downgrade Nuxt and Prisma to old major versions, which would undo the Stage 0 "use current stable majors" decision — not applied. Revisit if a non-breaking fix becomes available.
-- Local PostgreSQL via `docker compose up -d` was not run end-to-end in the environment this project was scaffolded in (Docker Desktop's daemon kept hanging on startup there). The compose file and Prisma wiring are in place and `prisma generate` works without a live DB; verify `docker compose up -d` + `npm run db:migrate` once Docker is available, and definitely before Stage 4.
+- **Local PostgreSQL has never been verified end-to-end in this environment.** Docker Desktop's daemon hung on startup throughout Stages 1–4 (including after a full process kill + relaunch); `docker info`/`docker ps`/`docker compose up -d` all time out. `prisma validate` and `prisma generate` work without a live DB and were run successfully, and the `/api/leads` route's `db_unavailable` error path was verified for real against this actually-unreachable database (see `tests/e2e/lead-submission.spec.ts`) — but the "happy path" (a lead actually landing in Postgres, `npm run db:migrate` producing a real migration, the CLI scripts touching real rows) has only been reviewed by reading the code, not run. **Treat this as the top priority to verify before trusting Stage 4 is fully working**: get Docker (or any reachable Postgres) running, then `npm run db:migrate -- --name init`, then resubmit the quiz and confirm a row appears in `Lead`.
 - Product/hero images under `public/images/**` are temporary SVG placeholders (clearly labeled "placeholder — concept photo pending"), not real photography or AI-rendered concepts — see `docs/image-prompts.md` for the brief and manifest to replace them before launch.
 
 ## Project status

@@ -23,6 +23,12 @@ const telegramError = computed(() => {
 
 <template>
   <div class="flex flex-col gap-4">
+    <!-- Honeypot: invisible to sighted and screen-reader users alike, but a
+         plain <input> a naive form-filling bot will still populate. -->
+    <div class="absolute h-0 w-0 overflow-hidden" aria-hidden="true">
+      <input v-model="contact.website" type="text" name="website" tabindex="-1" autocomplete="off" >
+    </div>
+
     <label class="flex flex-col gap-1 text-sm text-brand-text">
       {{ t('quiz.step9.ownerName') }}
       <input
