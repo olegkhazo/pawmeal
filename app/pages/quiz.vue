@@ -18,6 +18,7 @@ definePageMeta({ ssr: false })
 
 const { t, locale } = useI18n()
 useHead({ title: `${t('quiz.title')} — ${t('meta.defaultTitle')}` })
+useSeoMeta({ robots: 'noindex, nofollow' })
 
 const route = useRoute()
 const localePath = useLocalePath()

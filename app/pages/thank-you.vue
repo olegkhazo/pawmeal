@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { t } = useI18n()
 useHead({ title: `${t('thankYou.title')} — ${t('meta.defaultTitle')}` })
+useSeoMeta({ robots: 'noindex, nofollow' })
 
 const route = useRoute()
 const leadId = computed(() => {

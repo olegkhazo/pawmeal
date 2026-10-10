@@ -19,6 +19,23 @@ export default defineNuxtConfig({
   // upstream ships a fix.
   nitro: {
     externals: { inline: [/[\\/]node_modules[\\/]nuxt[\\/]dist[\\/]/] },
+    // Windows-only production-build workaround: Nitro's own bundle bootstrap
+    // sets a fallback `globalThis._importMeta_ = { url: "file:///_entry.js" }`
+    // for chunks that don't get a real per-chunk import.meta.url. The
+    // Prisma-generated client calls `fileURLToPath(globalThis._importMeta_.url)`
+    // at module-load time to resolve its own __dirname — and "file:///_entry.js"
+    // has no drive letter, so Node's Windows file-URL parser throws
+    // ERR_INVALID_FILE_URL_PATH, crashing the server before it can even start.
+    // This only reproduces on Windows (Node's POSIX file-URL parser accepts a
+    // driveless path fine); a Linux/production deploy is not expected to hit
+    // it. The banner runs before Nitro's own fallback assignment and sets a
+    // real, drive-lettered absolute path first, so Nitro's `||` default never
+    // overwrites it. Remove once upstream fixes the per-chunk shim on Windows.
+    rollupConfig: {
+      output: {
+        banner: `globalThis._importMeta_ = { url: 'file:///' + process.cwd().replace(/\\\\/g, '/') + '/_entry.js', env: process.env };`,
+      },
+    },
   },
 
   css: ['~/assets/css/main.css'],
@@ -53,8 +70,8 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    // Server-only: operational config, never sent to the client bundle.
-    dataRetentionDays: process.env.DATA_RETENTION_DAYS || '90',
+    // Server-only: an operational switch, not something to leak to the client
+    // bundle ahead of the server-authoritative price logic (Stage 11).
     priceTestEnabled: process.env.PRICE_TEST_ENABLED === 'true',
     public: {
       // These are published contact points by design (messenger links, privacy
@@ -65,6 +82,9 @@ export default defineNuxtConfig({
       businessTelegramUsername: process.env.BUSINESS_TELEGRAM_USERNAME || '',
       operatorContactEmail: process.env.OPERATOR_CONTACT_EMAIL || '',
       analyticsProvider: process.env.ANALYTICS_PROVIDER || 'none',
+      // Shown on the privacy page so the stated retention period always
+      // matches what scripts/purge-expired-leads.ts actually enforces.
+      dataRetentionDays: process.env.DATA_RETENTION_DAYS || '90',
     },
   },
 })

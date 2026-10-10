@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "Skip to content"
+  },
   "nav": {
     "howItWorks": "How it works",
     "menu": "Menu",
@@ -240,7 +243,24 @@
   },
   "privacy": {
     "title": "Privacy Policy",
-    "stageNote": "The full policy text will be added later, with the operator's real contact details."
+    "intro": "This describes what data we collect during the pilot stage and how we use it. The legal entity, address, and formal legal basis are not finalized yet — this page will be completed before a public launch.",
+    "collectedTitle": "What we collect",
+    "collectedBody": "Your quiz answers (pet species and age, city, menu preferences, willingness to consider a subscription), and contact details: phone number, name (if provided), preferred contact method, and Telegram handle (if provided).",
+    "purposeTitle": "What it's for",
+    "purposeBody": "To reach out and discuss food, cost, and delivery availability in your city before the pilot launches. This is not a subscription or an order — it's a request to register interest.",
+    "operatorTitle": "Who processes requests",
+    "operatorBody": "The team behind the temporary brand \"PawMeal Georgia\". The legal entity and official details will be published separately before a public launch.",
+    "recipientsTitle": "Who has access",
+    "recipientsBody": "Only the team handling requests has access. During the pilot, no third-party analytics or advertising services are connected.",
+    "securityTitle": "Data protection",
+    "securityBody": "Data in transit is protected by HTTPS; access to the database and server configuration is limited to developers via server-side credentials.",
+    "retentionTitle": "Retention period",
+    "retentionBody": "Contact details are kept for no longer than {days} days from the request date, then deleted automatically.",
+    "marketingTitle": "Marketing messages",
+    "marketingBody": "Consent to marketing messages is separate and optional. You can withdraw it at any time using the contact below.",
+    "contactTitle": "Deleting your data / questions",
+    "contactBodyConfigured": "Email {email} to delete your data or ask a question.",
+    "contactBodyMissing": "The operator's contact for data questions will be listed here before a public launch."
   },
   "notFound": {
     "title": "Page not found",
