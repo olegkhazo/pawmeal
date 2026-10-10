@@ -38,7 +38,7 @@
       "filterDog": "For dogs",
       "filterCat": "For cats",
       "conceptNote": "Recipe concept. Composition and availability are confirmed before launch.",
-      "galleryNote": "Visualization of future packaging.",
+      "galleryNote": "Ingredient photo. Packaging will look different.",
       "productCta": "Pick as a preference"
     },
     "subscription": {
@@ -59,32 +59,32 @@
     "dog-chicken": {
       "title": "Chicken for dogs",
       "description": "A chicken-based menu concept for dogs.",
-      "alt": "Packaging concept: chicken for dogs (visualization, not a final photo)"
+      "alt": "Chicken — the main ingredient of the dog concept. Ingredient photo, not packaging."
     },
     "dog-turkey": {
       "title": "Turkey for dogs",
       "description": "A turkey-based menu concept for dogs.",
-      "alt": "Packaging concept: turkey for dogs (visualization, not a final photo)"
+      "alt": "Turkey — the main ingredient of the dog concept. Ingredient photo, not packaging."
     },
     "dog-beef": {
       "title": "Beef for dogs",
       "description": "A beef-based menu concept for dogs.",
-      "alt": "Packaging concept: beef for dogs (visualization, not a final photo)"
+      "alt": "Beef — the main ingredient of the dog concept. Ingredient photo, not packaging."
     },
     "cat-chicken": {
       "title": "Chicken for cats",
       "description": "A chicken-based menu concept for cats.",
-      "alt": "Packaging concept: chicken for cats (visualization, not a final photo)"
+      "alt": "Chicken — the main ingredient of the cat concept. Ingredient photo, not packaging."
     },
     "cat-turkey": {
       "title": "Turkey for cats",
       "description": "A turkey-based menu concept for cats.",
-      "alt": "Packaging concept: turkey for cats (visualization, not a final photo)"
+      "alt": "Turkey — the main ingredient of the cat concept. Ingredient photo, not packaging."
     },
     "cat-fish": {
       "title": "Fish for cats",
       "description": "A fish-based menu concept for cats.",
-      "alt": "Packaging concept: fish for cats (visualization, not a final photo)"
+      "alt": "Salmon — the main ingredient of the cat concept. Ingredient photo, not packaging."
     }
   },
   "faq": {
@@ -100,7 +100,8 @@
     ]
   },
   "footer": {
-    "privacyLink": "Privacy Policy"
+    "privacyLink": "Privacy Policy",
+    "photoCredits": "Ingredient photos: Wikimedia Commons (CC0; beef photo CC BY-SA 2.5, Michael C. Berch) and Pixabay (Pixabay Content License)."
   },
   "quiz": {
     "title": "Quiz",
