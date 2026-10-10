@@ -21,9 +21,6 @@ const { t } = useI18n()
     <p class="mx-auto mt-4 max-w-2xl text-brand-text-muted">
       {{ t('home.hero.lead') }}
     </p>
-    <p class="mx-auto mt-2 max-w-2xl text-sm text-brand-text-muted">
-      {{ t('disclaimer') }}
-    </p>
 
     <div class="mt-8">
       <SpeciesSelector />
