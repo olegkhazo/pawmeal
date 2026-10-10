@@ -14,6 +14,12 @@
   --color-brand-accent-strong: #2f5f3e;
   --color-brand-border: #e7ddc9;
 
+  /* A secondary warm-orange accent for sections that should stand out from
+     the surrounding ivory/green palette (e.g. testimonials) — kept soft so
+     it still reads as part of the same warm, muted brand palette. */
+  --color-brand-highlight: #fadfc0;
+  --color-brand-highlight-strong: #c06a1f;
+
   --font-sans-ka: "Noto Sans Georgian", "Noto Sans", system-ui, sans-serif;
   --font-sans-default: "Noto Sans", system-ui, sans-serif;
 }
