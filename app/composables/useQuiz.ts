@@ -46,15 +46,17 @@ export function useQuiz() {
   // when the user starts a genuinely new quiz (clearDraft).
   const clientRequestId = useState<string>('quiz-client-request-id', () => crypto.randomUUID())
 
-  function hydrateFromStorageOrQuery(query: Record<string, unknown>) {
-    if (hydrated.value) return
+  /** Returns true when this is a genuinely new quiz (no resumed draft) — used
+   * by the page to decide whether to fire the quiz_started tracking event. */
+  function hydrateFromStorageOrQuery(query: Record<string, unknown>): boolean {
+    if (hydrated.value) return false
     hydrated.value = true
 
     const draft = loadDraftFromStorage()
     if (draft) {
       step.value = Math.min(Math.max(draft.step, 1), QUIZ_STEP_COUNT)
       answers.value = draft.answers
-      return
+      return false
     }
 
     const querySpecies = query.species
@@ -65,6 +67,7 @@ export function useQuiz() {
     if (typeof queryRecipeId === 'string' && queryRecipeId) {
       answers.value.preferredRecipeIds = [queryRecipeId]
     }
+    return true
   }
 
   function persist() {

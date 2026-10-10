@@ -24,12 +24,39 @@ const localePath = useLocalePath()
 const { step, answers, contact, clientRequestId, hydrateFromStorageOrQuery, persist, goNext, goBack, clearDraft } =
   useQuiz()
 const { submitting, submit } = useLeadSubmission()
+const { track } = useTracking()
 
 onMounted(() => {
-  hydrateFromStorageOrQuery(route.query)
+  const isFreshStart = hydrateFromStorageOrQuery(route.query)
+  if (isFreshStart) {
+    track({ name: 'quiz_started', species: answers.value.species, locale: locale.value })
+  }
 })
 
 watch(answers, () => persist(), { deep: true })
+
+watch(step, (newStep, oldStep) => {
+  if (newStep > oldStep) {
+    track({ name: 'quiz_step_completed', stepId: oldStep, locale: locale.value })
+    if (newStep === 8) {
+      track({
+        name: 'recommendation_viewed',
+        species: answers.value.species,
+        needsConsultation: recommendation.value.needsConsultation,
+        locale: locale.value,
+      })
+    }
+    if (newStep === 9) {
+      track({
+        name: 'quiz_completed',
+        species: answers.value.species,
+        cityId: answers.value.cityId,
+        planType: answers.value.planType,
+        locale: locale.value,
+      })
+    }
+  }
+})
 
 const ownRecipes = computed(() => recipes.filter((r) => r.species === answers.value.species))
 
@@ -157,10 +184,22 @@ async function handleNext() {
       experimentVariant: route.query.experimentVariant,
     })
     if (result.success && result.leadId) {
+      track({
+        name: 'lead_submit_success',
+        cityId: answers.value.cityId,
+        planType: answers.value.planType,
+        locale: locale.value,
+      })
+      const preferredChannel = contact.value.preferredChannel
       clearDraft()
-      await navigateTo({ path: localePath('/thank-you'), query: { leadId: result.leadId } })
+      await navigateTo({
+        path: localePath('/thank-you'),
+        query: { leadId: result.leadId, channel: preferredChannel ?? undefined },
+      })
     } else {
-      submitErrorCode.value = result.errorCode ?? 'network_error'
+      const errorCode = result.errorCode ?? 'network_error'
+      track({ name: 'lead_submit_error', errorCode, locale: locale.value })
+      submitErrorCode.value = errorCode
     }
     return
   }

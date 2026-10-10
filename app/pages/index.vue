@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { recipes, type Species } from '~~/data/recipes'
 
-const { t, tm } = useI18n()
+const { t, tm, locale } = useI18n()
 const localePath = useLocalePath()
 useHead({ title: t('meta.defaultTitle') })
 useSeoMeta({ description: t('meta.defaultDescription') })
+
+const { track } = useTracking()
+onMounted(() => track({ name: 'landing_view', locale: locale.value }))
 
 const valueItemCount = (tm('home.value.items') as unknown[]).length
 
