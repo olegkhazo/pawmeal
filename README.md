@@ -70,6 +70,36 @@ npm run build
 npm run preview      # or: node .output/server/index.mjs
 ```
 
+## Deployment
+
+This is a standard Nuxt 4 app with a Node (Nitro) server output — it is not tied to any one host. On any VM/container host that can run Node 22 LTS and reach a PostgreSQL instance:
+
+```bash
+npm ci
+npm run db:generate
+npm run db:migrate -- --name init   # first deploy only; later deploys use `prisma migrate deploy`
+npm run build
+node .output/server/index.mjs       # listens on $PORT (default 3000) / $HOST
+```
+
+Put a reverse proxy (nginx, Caddy, the platform's own load balancer, etc.) in front of it for HTTPS — Nitro's Node server itself does not terminate TLS. Set every variable from `.env.example` in the real environment (not a committed `.env` file) before starting. **On Windows specifically**, always run `node .output/server/index.mjs` directly once after building and confirm it actually answers a request — see the Windows production-build note under "Known issues" below; `npm run dev` will not catch a regression there. This project has not been deployed anywhere in this session (see `docs/launch-checklist.md`) — the commands above are the intended path, not a verified one yet.
+
+For subsequent deploys, prefer `npx prisma migrate deploy` over `migrate dev` (it doesn't prompt and doesn't try to create a new migration from schema drift) once `prisma/migrations/` already has history.
+
+## Backup / restore
+
+There's no custom backup tooling here — use Postgres' own:
+
+```bash
+# Backup
+pg_dump "$DATABASE_URL" -F c -f pawmeal-backup.dump
+
+# Restore into an empty database
+pg_restore -d "$DATABASE_URL" --clean --if-exists pawmeal-backup.dump
+```
+
+Retention is handled separately by `npm run purge-expired-leads` (deletes leads older than `DATA_RETENTION_DAYS`) — run it on a schedule (cron, a platform scheduled job, etc.); nothing in this repo schedules it automatically. Back up before running it if you ever need to recover a purged lead.
+
 ## Environment variables
 
 See `.env.example` for the full list and inline comments. Summary:
@@ -98,4 +128,4 @@ Production startup should validate that the required variables above are actuall
 
 ## Project status
 
-See `docs/progress.md` for the stage-by-stage build log (done / next / validation / blockers) and `docs/references.md` for the competitive-reference review from Stage 0.
+See `docs/progress.md` for the stage-by-stage build log (done / next / validation / blockers), `docs/references.md` for the competitive-reference review from Stage 0, `docs/measurement.md` for the analytics funnel and formulas, and **`docs/launch-checklist.md` before any public launch** — it lists everything that is still a placeholder (images, Georgian proofreading, business contacts, live-DB verification, performance measurement) and must not be treated as done just because the code exists.
