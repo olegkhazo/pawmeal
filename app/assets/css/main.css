@@ -22,6 +22,9 @@
 
   --font-sans-ka: "Noto Sans Georgian", "Noto Sans", system-ui, sans-serif;
   --font-sans-default: "Noto Sans", system-ui, sans-serif;
+  /* Wordmark only — the "PawMeal" text in the header. Not used for body
+     text or Georgian (Fraunces has no Georgian glyph coverage). */
+  --font-logo: "Fraunces", Georgia, "Noto Serif", serif;
 }
 
 html,

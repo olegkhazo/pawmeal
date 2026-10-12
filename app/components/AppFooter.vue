@@ -6,7 +6,6 @@ const localePath = useLocalePath()
 <template>
   <footer class="border-t border-brand-border bg-brand-surface">
     <div class="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-6 text-sm text-brand-text-muted">
-      <p>{{ t('disclaimer') }}</p>
       <NuxtLink :to="localePath('/privacy')" class="text-brand-accent hover:text-brand-accent-strong">
         {{ t('footer.privacyLink') }}
       </NuxtLink>

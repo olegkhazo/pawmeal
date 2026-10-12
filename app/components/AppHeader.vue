@@ -12,7 +12,7 @@ const homeAnchor = (hash: string) => `${localePath('/')}#${hash}`
 <template>
   <header class="border-b border-brand-border bg-brand-surface">
     <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-y-2 gap-x-3 px-4 py-3">
-      <NuxtLink :to="localePath('/')" class="text-base font-semibold text-brand-text sm:text-lg">
+      <NuxtLink :to="localePath('/')" class="font-logo text-xl font-semibold text-brand-text sm:text-2xl">
         {{ config.public.brandName }}
       </NuxtLink>
 

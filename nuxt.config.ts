@@ -48,6 +48,12 @@ export default defineNuxtConfig({
     families: [
       { name: 'Noto Sans Georgian', provider: 'google', weights: [400, 500, 600, 700] },
       { name: 'Noto Sans', provider: 'google', weights: [400, 500, 600, 700] },
+      // Bold editorial serif for the "PawMeal" wordmark only — a free
+      // equivalent in spirit to the premium condensed serif used in
+      // differentdog.com's headlines (their actual logo is a drawn SVG
+      // mark, not styled text, so there's nothing to copy there; see
+      // docs/image-prompts.md for the brief research note).
+      { name: 'Fraunces', provider: 'google', weights: [600, 700] },
     ],
   },
 
@@ -76,7 +82,7 @@ export default defineNuxtConfig({
     public: {
       // These are published contact points by design (messenger links, privacy
       // page deletion contact) — not secrets, so they are safe in runtimeConfig.public.
-      brandName: process.env.BRAND_NAME || 'PawMeal Georgia',
+      brandName: process.env.BRAND_NAME || 'PawMeal',
       siteUrl: process.env.PUBLIC_SITE_URL || 'http://localhost:3000',
       businessWhatsappNumber: process.env.BUSINESS_WHATSAPP_NUMBER || '',
       businessTelegramUsername: process.env.BUSINESS_TELEGRAM_USERNAME || '',
