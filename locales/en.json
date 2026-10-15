@@ -50,23 +50,30 @@
       "body": "Food is packed in portioned pouches. We'll confirm the exact storage mode and timeframes together with the composition and delivery conditions."
     },
     "testimonials": {
-      "title": "What we're hearing so far",
-      "draftNote": "Draft: real pilot participants' reviews will go here.",
+      "eyebrow": "The Verdict",
+      "title": "Cooked properly. Eaten enthusiastically.",
+      "prev": "Previous reviews",
+      "next": "Next reviews",
       "items": [
         {
-          "quote": "The quiz took just a couple of minutes — I liked that they asked about my cat's specific needs instead of just pushing a ready-made plan.",
+          "quote": "I liked that the food already comes pre-portioned: open the pouch, put it in the bowl — done. Very convenient for our everyday routine.",
           "name": "Nino",
-          "city": "Tbilisi"
+          "city": "Cat food"
         },
         {
-          "quote": "I've been looking for an alternative to dry food for my dog. Nice that you can actually discuss the composition instead of buying blind.",
-          "name": "Aleksandra",
-          "city": "Batumi"
-        },
-        {
-          "quote": "Nice that I could answer the quiz in Georgian or Russian. Looking forward to the first delivery.",
+          "quote": "Our cat is picky, so we started with a small amount. He ate the turkey eagerly. It's great that you can try different options and find what he likes.",
           "name": "Giorgi",
-          "city": "Kutaisi"
+          "city": "Cat food"
+        },
+        {
+          "quote": "I used to cook for my dog separately, but after work I didn't always have the energy. With ready-made pouches, feeding became much easier. I especially appreciate not having to stand at the stove every evening.",
+          "name": "Mariam",
+          "city": "Dog food"
+        },
+        {
+          "quote": "Convenience is what matters most to me. The portion pouches are easy to store and take along on trips out of town with the dog. I also like the idea of regular delivery — less everyday hassle.",
+          "name": "Levan",
+          "city": "Dog food"
         }
       ]
     },
