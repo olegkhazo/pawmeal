@@ -25,6 +25,7 @@ const quizLink = computed(() => ({
     <div class="flex flex-1 flex-col gap-2 p-4">
       <h3 class="font-semibold text-brand-text">{{ t(`recipes.${recipe.translationKey}.title`) }}</h3>
       <p class="text-sm text-brand-text-muted">{{ t(`recipes.${recipe.translationKey}.description`) }}</p>
+      <p class="text-sm text-brand-text">{{ t(`recipes.${recipe.translationKey}.benefit`) }}</p>
       <p class="text-xs italic text-brand-text-muted">{{ t('home.catalog.conceptNote') }}</p>
       <p class="text-xs text-brand-text-muted">{{ t('home.catalog.galleryNote') }}</p>
       <NuxtLink

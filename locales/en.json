@@ -8,7 +8,6 @@
     "faq": "FAQ",
     "cta": "Take the quiz"
   },
-  "disclaimer": "We're preparing to launch delivery in Georgia. Leave a request — we'll discuss the food, cost, and availability in your city.",
   "home": {
     "hero": {
       "title": "Care in every portion. More time together.",
@@ -40,7 +39,7 @@
       "filterCat": "For cats",
       "conceptNote": "Recipe concept. Composition and availability are confirmed before launch.",
       "galleryNote": "Ingredient photo. Packaging will look different.",
-      "productCta": "Pick as a preference"
+      "productCta": "Leave a subscription request"
     },
     "subscription": {
       "title": "Subscription format",
@@ -81,31 +80,37 @@
     "dog-chicken": {
       "title": "Chicken for dogs",
       "description": "A chicken-based menu concept for dogs.",
+      "benefit": "A mild, familiar taste most dogs already know — a good place to start with our concepts.",
       "alt": "Chicken — the main ingredient of the dog concept. Ingredient photo, not packaging."
     },
     "dog-turkey": {
       "title": "Turkey for dogs",
       "description": "A turkey-based menu concept for dogs.",
+      "benefit": "Light meat with a slightly stronger taste than chicken — an interesting way to add variety to the menu.",
       "alt": "Turkey — the main ingredient of the dog concept. Ingredient photo, not packaging."
     },
     "dog-beef": {
       "title": "Beef for dogs",
       "description": "A beef-based menu concept for dogs.",
+      "benefit": "A rich, hearty taste with a noticeable aroma — a hit with dogs that go for bolder flavors.",
       "alt": "Beef — the main ingredient of the dog concept. Ingredient photo, not packaging."
     },
     "cat-chicken": {
       "title": "Chicken for cats",
       "description": "A chicken-based menu concept for cats.",
+      "benefit": "A classic taste many cats already love — a safe choice to start exploring the menu.",
       "alt": "Chicken — the main ingredient of the cat concept. Ingredient photo, not packaging."
     },
     "cat-turkey": {
       "title": "Turkey for cats",
       "description": "A turkey-based menu concept for cats.",
+      "benefit": "Light, tender meat with a mild taste — a nice alternative to chicken for variety.",
       "alt": "Turkey — the main ingredient of the cat concept. Ingredient photo, not packaging."
     },
     "cat-fish": {
       "title": "Fish for cats",
       "description": "A fish-based menu concept for cats.",
+      "benefit": "A bold fish taste and aroma that cats find especially appealing — one of the most popular flavors in the lineup.",
       "alt": "Salmon — the main ingredient of the cat concept. Ingredient photo, not packaging."
     }
   },

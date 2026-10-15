@@ -45,7 +45,7 @@ test('menu filter narrows the catalog to the selected species', async ({ page })
 test('product CTA carries species and recipeId as a preference', async ({ page }) => {
   await page.goto('/ka')
   await page.getByRole('button', { name: 'ძაღლებისთვის' }).click()
-  await page.getByRole('link', { name: 'შერჩევა როგორც პრეფერენცია' }).first().click()
+  await page.getByRole('link', { name: 'განაცხადის დატოვება გამოწერაზე' }).first().click()
   await expect(page).toHaveURL(/\/ka\/quiz\?species=dog&recipeId=dog-/)
 })
 

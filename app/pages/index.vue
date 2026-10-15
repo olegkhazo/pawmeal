@@ -100,7 +100,6 @@ const filters: { value: Filter; labelKey: string }[] = [
       >
         {{ t('home.finalCta.button') }}
       </NuxtLink>
-      <p class="mt-6 text-sm text-brand-text-muted">{{ t('disclaimer') }}</p>
     </section>
   </div>
 </template>
