@@ -37,8 +37,6 @@
       "filterAll": "All",
       "filterDog": "For dogs",
       "filterCat": "For cats",
-      "conceptNote": "Recipe concept. Composition and availability are confirmed before launch.",
-      "galleryNote": "Ingredient photo. Packaging will look different.",
       "productCta": "Leave a subscription request"
     },
     "subscription": {
