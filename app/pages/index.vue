@@ -71,12 +71,20 @@ const filters: { value: Filter; labelKey: string }[] = [
       </div>
     </section>
 
-    <section class="mx-auto max-w-3xl px-4 py-12 text-center">
-      <h2 class="text-2xl font-semibold text-brand-text sm:text-3xl">
-        {{ t('home.subscription.title') }}
-      </h2>
-      <p class="mt-4 text-brand-text-muted">{{ t('home.subscription.body') }}</p>
-      <p class="mt-2 text-sm text-brand-text-muted">{{ t('home.subscription.note') }}</p>
+    <section class="mx-auto max-w-5xl px-4 py-12">
+      <div class="mx-auto flex max-w-2xl flex-col items-center gap-4 rounded-3xl border border-brand-accent/30 bg-brand-surface p-8 text-center shadow-sm sm:p-10">
+        <h2 class="text-2xl font-semibold text-brand-text sm:text-3xl">
+          {{ t('home.subscription.title') }}
+        </h2>
+        <p class="text-brand-text-muted">{{ t('home.subscription.body') }}</p>
+        <p class="text-brand-text-muted">{{ t('home.subscription.body2') }}</p>
+        <NuxtLink
+          :to="localePath('/quiz')"
+          class="mt-2 inline-block rounded-full bg-brand-accent px-6 py-3 text-sm font-medium text-white hover:bg-brand-accent-strong"
+        >
+          {{ t('home.subscription.button') }}
+        </NuxtLink>
+      </div>
     </section>
 
     <section class="mx-auto max-w-3xl px-4 py-12 text-center">

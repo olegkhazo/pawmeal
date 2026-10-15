@@ -41,8 +41,9 @@
     },
     "subscription": {
       "title": "Subscription format",
-      "body": "Delivery frequency, pouch size, and cost will be agreed individually before the pilot launches in your city.",
-      "note": "Pause and cancel features arrive at launch — right now we're collecting requests to gauge interest."
+      "body": "A supplement to your pet's usual food, or a full daily diet — choose the format that fits, with regular delivery.",
+      "body2": "The exact cost depends on the menu and portion size you choose — take a short quiz and we'll put together an option for your pet and confirm the cost before you commit.",
+      "button": "Pick a subscription"
     },
     "packaging": {
       "title": "Packaging and storage",
