@@ -39,7 +39,7 @@ export interface QuizDraftAnswers {
   planType: PlanType | null
   frequencyPreference: FrequencyPreference | null
 
-  monthlyBudgetGel: string
+  monthlyBudgetGel: string | number
   monthlyBudgetUnknown: boolean
   subscriptionInterest: SubscriptionInterest | null
 

@@ -75,7 +75,8 @@ export const step6Schema = z.object({
 
 export const step7Schema = z
   .object({
-    monthlyBudgetGel: z.string().optional().or(z.literal('')),
+    // v-model on <input type="number"> yields a number once typed, '' when cleared.
+    monthlyBudgetGel: z.union([z.string(), z.number()]).optional(),
     monthlyBudgetUnknown: z.boolean(),
     subscriptionInterest: z.enum(['yes', 'maybe', 'no'], { error: 'validation.required' }),
   })
