@@ -46,6 +46,14 @@ The hero no longer uses the sealed-pouch "packaging concept" composition describ
 
 > Photorealistic premium pet food concept product photography, unbranded sealed flat food pouch with subtle transparent window showing gently cooked food, warm ivory studio background, soft natural shadows, minimal muted green label area left blank for later typography, matching product family, realistic food texture, no logos, no readable text, no medical badges, no hands, no watermark. Product is a packaging concept, not an existing certified product.
 
+## Packaging & storage illustration (2026-10-24)
+
+The owner asked the "Packaging and storage" block to stand out and carry an image: an open fridge with pet-food pouches inside, the pouches only faintly visible. The block's copy now leads with storage (fridge or a cool place, no direct sunlight) and the doypack (stand-up pouch) format. Exact shelf life is still not stated — "we'll confirm together with composition and delivery conditions" stays.
+
+Currently rendered as an inline SVG illustration in `app/components/PackagingSection.vue` (no stock photo with a usable license was available for this exact scene). If a real photo/render is wanted later, use:
+
+> Photorealistic photo of an open modern home refrigerator, soft cool interior light, glass shelves holding several unbranded matte stand-up doypack pet food pouches in muted green, amber and terracotta tones, pouches slightly out of focus and partly veiled by gentle cold haze so they are only faintly visible, warm ivory kitchen background, no logos, no readable text, no people, no watermark. Packaging concept, not an existing certified product.
+
 ## Still not done
 
 - No sealed-pouch packaging photography/renders of the actual product — both the hero and the product cards currently show real but unbranded stock photography (pets, ingredients), not the product itself, since there is no real packaging yet.
