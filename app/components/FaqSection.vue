@@ -17,7 +17,7 @@ const itemCount = (tm('faq.items') as unknown[]).length
         <summary class="cursor-pointer list-none font-medium text-brand-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent">
           {{ t(`faq.items.${index - 1}.q`) }}
         </summary>
-        <p class="mt-2 text-sm text-brand-text-muted">{{ t(`faq.items.${index - 1}.a`) }}</p>
+        <p class="mt-2 whitespace-pre-line text-sm text-brand-text-muted">{{ t(`faq.items.${index - 1}.a`) }}</p>
       </details>
     </div>
   </section>

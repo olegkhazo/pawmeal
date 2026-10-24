@@ -19,7 +19,7 @@
     "value": {
       "items": [
         "Portioned pouches that are easy to store and use",
-        "Several menu concepts for dogs and cats — pick a starting point, refine it later",
+        "Several kinds of food for dogs and cats — pick a starting point, refine it later",
         "Delivery schedule and conditions discussed with you personally, for your city"
       ]
     },
@@ -27,7 +27,7 @@
       "title": "How it works",
       "steps": [
         { "title": "Quiz", "description": "Tell us about your pet: species, age, weight, feeding details." },
-        { "title": "Preliminary pick", "description": "We suggest menu concepts that fit your answers." },
+        { "title": "Preliminary pick", "description": "We suggest food that fits your answers." },
         { "title": "Talk with an operator", "description": "We'll reach out on WhatsApp, Telegram, or by phone to go over the details." },
         { "title": "Pilot delivery agreed", "description": "We'll agree on a trial delivery if everything fits." }
       ]
@@ -100,49 +100,48 @@
   "recipes": {
     "dog-chicken": {
       "title": "Chicken for dogs",
-      "description": "A chicken-based menu concept for dogs.",
-      "benefit": "A mild, familiar taste most dogs already know — a good place to start with our concepts.",
-      "alt": "Chicken — the main ingredient of the dog concept. Ingredient photo, not packaging."
+      "description": "A chicken-based food for dogs.",
+      "benefit": "A mild, familiar taste most dogs already know — a good place to start with our food.",
+      "alt": "Chicken — the main ingredient of the dog food. Ingredient photo, not packaging."
     },
     "dog-turkey": {
       "title": "Turkey for dogs",
-      "description": "A turkey-based menu concept for dogs.",
+      "description": "A turkey-based food for dogs.",
       "benefit": "Light meat with a slightly stronger taste than chicken — an interesting way to add variety to the menu.",
-      "alt": "Turkey — the main ingredient of the dog concept. Ingredient photo, not packaging."
+      "alt": "Turkey — the main ingredient of the dog food. Ingredient photo, not packaging."
     },
     "dog-beef": {
       "title": "Beef for dogs",
-      "description": "A beef-based menu concept for dogs.",
+      "description": "A beef-based food for dogs.",
       "benefit": "A rich, hearty taste with a noticeable aroma — a hit with dogs that go for bolder flavors.",
-      "alt": "Beef — the main ingredient of the dog concept. Ingredient photo, not packaging."
+      "alt": "Beef — the main ingredient of the dog food. Ingredient photo, not packaging."
     },
     "cat-chicken": {
       "title": "Chicken for cats",
-      "description": "A chicken-based menu concept for cats.",
+      "description": "A chicken-based food for cats.",
       "benefit": "A classic taste many cats already love — a safe choice to start exploring the menu.",
-      "alt": "Chicken — the main ingredient of the cat concept. Ingredient photo, not packaging."
+      "alt": "Chicken — the main ingredient of the cat food. Ingredient photo, not packaging."
     },
     "cat-turkey": {
       "title": "Turkey for cats",
-      "description": "A turkey-based menu concept for cats.",
+      "description": "A turkey-based food for cats.",
       "benefit": "Light, tender meat with a mild taste — a nice alternative to chicken for variety.",
-      "alt": "Turkey — the main ingredient of the cat concept. Ingredient photo, not packaging."
+      "alt": "Turkey — the main ingredient of the cat food. Ingredient photo, not packaging."
     },
     "cat-fish": {
       "title": "Fish for cats",
-      "description": "A fish-based menu concept for cats.",
+      "description": "A fish-based food for cats.",
       "benefit": "A bold fish taste and aroma that cats find especially appealing — one of the most popular flavors in the lineup.",
-      "alt": "Salmon — the main ingredient of the cat concept. Ingredient photo, not packaging."
+      "alt": "Salmon — the main ingredient of the cat food. Ingredient photo, not packaging."
     }
   },
   "faq": {
     "title": "FAQ",
     "items": [
-      { "q": "Is this a running delivery service already?", "a": "No, we're preparing a pilot launch in Georgia and are currently collecting requests to gauge interest and demand." },
-      { "q": "Which cities will this be available in?", "a": "We plan to start with a few cities in Georgia. Leave a request from any city — we'll discuss availability with you personally." },
-      { "q": "How much will this cost?", "a": "We'll discuss the cost after the quiz." },
-      { "q": "How does payment work?", "a": "No payment is required during the pilot. We'll discuss payment terms once delivery is ready to launch." },
-      { "q": "Is this suitable for both dogs and cats?", "a": "Yes, we have separate concepts for dogs and for cats — you pick the species in the quiz." },
+      { "q": "Which cities do you deliver to?", "a": "We deliver throughout Georgia." },
+      { "q": "How much does the subscription cost?", "a": "The estimated cost is 60 to 200 GEL per month, depending on the chosen menu and portion volume.\n\nTake a short quiz — we will suggest an option for your pet and confirm the price before you sign up." },
+      { "q": "How do I pay for the subscription?", "a": "Payment is made by bank transfer." },
+      { "q": "Is this suitable for both dogs and cats?", "a": "Yes, we have separate food for dogs and for cats — you pick the species in the quiz." },
       { "q": "How do I leave a request?", "a": "Take the short quiz on the site and leave your phone number — we'll reach out on WhatsApp, Telegram, or by phone." },
       { "q": "What if my pet has special dietary needs?", "a": "Tell us in the quiz — we'll pass it on to the operator and check the diet with a specialist if needed." }
     ]
@@ -202,7 +201,7 @@
     },
     "step6": {
       "title": "Menu preferences",
-      "recipesLabel": "Pick concepts you're interested in (optional)",
+      "recipesLabel": "Pick the food you're interested in (optional)",
       "planTypeLabel": "What do you need?",
       "planType": { "full": "Full diet", "supplement": "Supplement to current food", "help": "Need guidance" },
       "frequencyLabel": "Preferred delivery frequency",
@@ -220,9 +219,9 @@
       "consultationNeeded": "Diet needs to be checked with a specialist",
       "consultationBody": "Based on your answers, exact suitability is better discussed separately. We'll pass these details on to the operator.",
       "possibleOptions": "Possible options to discuss:",
-      "recommendedTitle": "Preliminarily suitable concepts:",
-      "noMatches": "None of the current concepts fit your answers yet — we'll discuss food separately.",
-      "conceptCaveat": "Recipe concept. Composition and availability are confirmed before launch.",
+      "recommendedTitle": "Preliminarily suitable food:",
+      "noMatches": "None of our current food fits your answers yet — we'll discuss food separately.",
+      "conceptCaveat": "We'll confirm the composition and availability of the food before you subscribe.",
       "pricePrefix": "Preliminary test price: {price} GEL/month; final terms confirmed before launch.",
       "priceQuestion": "Would you consider this at this price?",
       "price": { "yes": "Yes", "maybe": "Maybe", "no": "No" },
