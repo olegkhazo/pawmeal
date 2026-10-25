@@ -8,5 +8,6 @@
   NODE_VERSION = "22"
   LEAD_CAPTURE = "telegram"
   BUSINESS_TELEGRAM_USERNAME = "oleg_zhura"
+  PUBLIC_SITE_URL = "https://paw-meal.netlify.app"
   # prisma.config.ts requires DATABASE_URL just to load; generate never connects.
   DATABASE_URL = "postgresql://unused:unused@localhost:5432/unused"
