@@ -8,8 +8,9 @@ withDefaults(
     showBack?: boolean
     nextLabel?: string
     canGoNext?: boolean
+    showNext?: boolean
   }>(),
-  { showBack: true, canGoNext: true, nextLabel: '' },
+  { showBack: true, canGoNext: true, nextLabel: '', showNext: true },
 )
 
 const emit = defineEmits<{ back: []; next: [] }>()
@@ -35,6 +36,7 @@ const { t } = useI18n()
       <span v-else />
 
       <button
+        v-if="showNext"
         type="button"
         :disabled="!canGoNext"
         class="rounded-full bg-brand-accent px-5 py-2 text-sm font-medium text-white hover:bg-brand-accent-strong disabled:cursor-not-allowed disabled:opacity-50"

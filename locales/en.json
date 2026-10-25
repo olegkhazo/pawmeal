@@ -227,6 +227,33 @@
       "price": { "yes": "Yes", "maybe": "Maybe", "no": "No" },
       "noPriceYet": "We'll discuss the cost after the quiz."
     },
+    "telegram": {
+      "title": "Message us on Telegram",
+      "body": "We've put your answers into one message. Tap the button — the message is copied, then just paste it into the chat that opens and send it. We'll reply and pick the right food for your pet.",
+      "button": "Open Telegram",
+      "copy": "Copy my answers",
+      "copied": "Copied — paste it into the chat",
+      "note": "If the text wasn't copied automatically, select it above and copy it by hand.",
+      "greeting": "Hi! I'd like to pick food for my pet.",
+      "summary": {
+        "pet": "Pet",
+        "city": "City",
+        "age": "Age",
+        "weight": "Weight",
+        "kg": "kg",
+        "breed": "Breed",
+        "activity": "Activity",
+        "currentFood": "Currently eats",
+        "reactions": "Ingredient reactions",
+        "specialDiet": "Vet-prescribed diet",
+        "preferred": "Food of interest",
+        "recommended": "Suggested food",
+        "plan": "Format",
+        "frequency": "Delivery frequency",
+        "budget": "Monthly food budget",
+        "subscription": "Open to a subscription"
+      }
+    },
     "step9": {
       "title": "Contact details",
       "ownerName": "Your name (optional)",

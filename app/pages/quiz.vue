@@ -165,6 +165,8 @@ const cityLabel = computed(() => {
 })
 
 // --- step 9 ---
+const config = useRuntimeConfig()
+const telegramHandoff = computed(() => config.public.leadCapture === 'telegram')
 const step9Valid = computed(() => isContactValid(contact.value))
 const submitErrorCode = ref<string | null>(null)
 
@@ -587,6 +589,15 @@ const currentStepValid = computed(() => {
 
       <p class="text-xs italic text-brand-text-muted">{{ t('quiz.step8.conceptCaveat') }}</p>
       <p class="text-sm text-brand-text-muted">{{ t('quiz.step8.noPriceYet') }}</p>
+    </QuizStep>
+
+    <QuizStep
+      v-else-if="step === 9 && telegramHandoff"
+      :title="t('quiz.telegram.title')"
+      :show-next="false"
+      @back="goBack"
+    >
+      <TelegramHandoff :answers="answers" :recommended-recipe-ids="recommendation.recommendedRecipeIds" />
     </QuizStep>
 
     <QuizStep
