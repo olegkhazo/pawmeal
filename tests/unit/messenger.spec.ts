@@ -21,4 +21,10 @@ describe('buildTelegramHref', () => {
   it('leaves a username without a leading @ unchanged', () => {
     expect(buildTelegramHref('pawmeal_support')).toBe('https://t.me/pawmeal_support')
   })
+
+  it('prefills the message input with URL-encoded text', () => {
+    expect(buildTelegramHref('@pawmeal_support', 'Pet: Dog\nCity: Tbilisi')).toBe(
+      'https://t.me/pawmeal_support?text=Pet%3A%20Dog%0ACity%3A%20Tbilisi',
+    )
+  })
 })

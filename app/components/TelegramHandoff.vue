@@ -4,16 +4,14 @@ import { recipes } from '~~/data/recipes'
 import type { QuizDraftAnswers } from '~~/shared/types/quiz'
 
 // Lead capture without a database: instead of the contact form, the visitor
-// copies a summary of their answers and pastes it into a Telegram chat with
-// the operator. t.me links can't prefill a message to a specific user, so the
-// summary goes through the clipboard (and stays visible to copy by hand).
+// opens a Telegram chat with the operator with a summary of their answers
+// already in the message input. The summary is also copied to the clipboard
+// and shown on screen, for clients that ignore the prefilled text.
 const props = defineProps<{ answers: QuizDraftAnswers; recommendedRecipeIds: string[] }>()
 
 const { t, locale } = useI18n()
 const config = useRuntimeConfig()
 const { track } = useTracking()
-
-const telegramHref = computed(() => buildTelegramHref(config.public.businessTelegramUsername))
 
 const summary = computed(() => {
   const a = props.answers
@@ -53,6 +51,8 @@ const summary = computed(() => {
   return [t('quiz.telegram.greeting'), ...lines.filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`)].join('\n')
 })
 
+const telegramHref = computed(() => buildTelegramHref(config.public.businessTelegramUsername, summary.value))
+
 const copied = ref(false)
 async function copySummary() {
   try {
@@ -66,7 +66,7 @@ async function copySummary() {
 }
 
 function onTelegramClick() {
-  // Copy first, inside the same click, so the text is ready to paste when Telegram opens.
+  // Fallback for Telegram clients that don't apply the prefilled text.
   void copySummary()
   track({ name: 'messenger_clicked', channel: 'telegram', locale: locale.value })
 }

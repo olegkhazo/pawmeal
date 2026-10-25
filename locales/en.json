@@ -229,11 +229,11 @@
     },
     "telegram": {
       "title": "Message us on Telegram",
-      "body": "We've put your answers into one message. Tap the button — the message is copied, then just paste it into the chat that opens and send it. We'll reply and pick the right food for your pet.",
+      "body": "Tap the button — a chat with us opens with your answers already in the message box. Just press Send. We'll reply and pick the right food for your pet.",
       "button": "Open Telegram",
       "copy": "Copy my answers",
       "copied": "Copied — paste it into the chat",
-      "note": "If the text wasn't copied automatically, select it above and copy it by hand.",
+      "note": "If your answers don't appear in the chat, copy them with the button above and paste them by hand.",
       "greeting": "Hi! I'd like to pick food for my pet.",
       "summary": {
         "pet": "Pet",
