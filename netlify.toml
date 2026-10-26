@@ -1,13 +1,14 @@
 # Netlify deploy (free tier) for UI testing without a database: the quiz ends
-# with a Telegram handoff (LEAD_CAPTURE=telegram), so /api/leads is never called.
+# with a Telegram / WhatsApp / email handoff, so /api/leads is never called.
 [build]
   # generated/ (the Prisma client) is gitignored, so it's generated on every build.
   command = "npx prisma generate && npm run build"
 
 [build.environment]
   NODE_VERSION = "22"
-  LEAD_CAPTURE = "telegram"
   BUSINESS_TELEGRAM_USERNAME = "oleg_zhura"
+  BUSINESS_WHATSAPP_NUMBER = "+380631349272"
+  OPERATOR_CONTACT_EMAIL = "olegkhazo@gmail.com"
   PUBLIC_SITE_URL = "https://paw-meal.netlify.app"
   # prisma.config.ts requires DATABASE_URL just to load; generate never connects.
   DATABASE_URL = "postgresql://unused:unused@localhost:5432/unused"

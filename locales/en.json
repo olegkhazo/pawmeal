@@ -170,70 +170,27 @@
       "weight": "Weight, kg",
       "breed": "Breed (optional)",
       "breedMixed": "Mixed breed",
-      "breedUnknown": "Don't know"
-    },
-    "step4": {
-      "title": "Activity and current food",
-      "activity": { "low": "Low", "medium": "Medium", "high": "High" },
-      "currentFood": {
-        "dry": "Dry food",
-        "wet": "Wet food",
-        "homeCooked": "Home-cooked food",
-        "mixed": "Mixed diet",
-        "other": "Other"
-      }
-    },
-    "step5": {
-      "title": "Ingredient reactions",
-      "excludedLabel": "Known ingredient reactions",
-      "excluded": {
-        "chicken": "Chicken",
-        "turkey": "Turkey",
-        "beef": "Beef",
-        "fish": "Fish",
-        "other": "Other",
-        "none": "No known reactions",
-        "unknown": "Don't know"
-      },
-      "otherReaction": "Describe the reaction",
-      "specialDietQuestion": "Has a vet prescribed a special diet?",
-      "specialDiet": { "yes": "Yes", "no": "No", "unknown": "Don't know" }
-    },
-    "step6": {
-      "title": "Menu preferences",
-      "recipesLabel": "Pick the food you're interested in (optional)",
-      "planTypeLabel": "What do you need?",
-      "planType": { "full": "Full diet", "supplement": "Supplement to current food", "help": "Need guidance" },
+      "breedUnknown": "Don't know",
       "frequencyLabel": "Preferred delivery frequency",
       "frequency": { "weekly": "Weekly", "biweekly": "Every two weeks", "monthly": "Monthly", "unsure": "Not sure yet" }
     },
-    "step7": {
-      "title": "Budget and readiness",
-      "budgetLabel": "Current monthly spend on food, GEL (optional)",
-      "budgetUnknown": "Don't know",
-      "subscriptionQuestion": "Would you consider a subscription?",
-      "subscription": { "yes": "Yes", "maybe": "Maybe", "no": "No" }
-    },
-    "step8": {
-      "title": "Preliminary offer",
-      "consultationNeeded": "Diet needs to be checked with a specialist",
-      "consultationBody": "Based on your answers, exact suitability is better discussed separately. We'll pass these details on to the operator.",
-      "possibleOptions": "Possible options to discuss:",
-      "recommendedTitle": "Preliminarily suitable food:",
-      "noMatches": "None of our current food fits your answers yet — we'll discuss food separately.",
-      "conceptCaveat": "We'll confirm the composition and availability of the food before you subscribe.",
-      "pricePrefix": "Preliminary test price: {price} GEL/month; final terms confirmed before launch.",
-      "priceQuestion": "Would you consider this at this price?",
-      "price": { "yes": "Yes", "maybe": "Maybe", "no": "No" },
-      "noPriceYet": "We'll discuss the cost after the quiz."
-    },
-    "telegram": {
-      "title": "Message us on Telegram",
-      "body": "Tap the button — a chat with us opens with your answers already in the message box. Just press Send. We'll reply and pick the right food for your pet.",
-      "button": "Open Telegram",
+    "handoff": {
+      "title": "Message us on Telegram or WhatsApp",
+      "body": "Tap a button — a chat with us opens with your answers already in the message box. Just press Send.",
+      "telegramButton": "Message us on Telegram",
+      "whatsappButton": "Message us on WhatsApp",
       "copy": "Copy my answers",
       "copied": "Copied — paste it into the chat",
       "note": "If your answers don't appear in the chat, copy them with the button above and paste them by hand.",
+      "orLeaveContacts": "Or leave your details — we'll get in touch",
+      "name": "Your name",
+      "phone": "Phone",
+      "phoneInvalid": "Please check the phone number",
+      "submit": "Send",
+      "mailNote": "Your email app will open with a ready-made message — just press Send.",
+      "mailFallback": "If your email app didn't open, write to us at {email}",
+      "emailSubject": "Food for my pet",
+      "emailSubjectWithName": "Food for my pet {name}",
       "greeting": "Hi! I'd like to pick food for my pet.",
       "summary": {
         "pet": "Pet",
@@ -242,16 +199,9 @@
         "weight": "Weight",
         "kg": "kg",
         "breed": "Breed",
-        "activity": "Activity",
-        "currentFood": "Currently eats",
-        "reactions": "Ingredient reactions",
-        "specialDiet": "Vet-prescribed diet",
-        "preferred": "Food of interest",
-        "recommended": "Suggested food",
-        "plan": "Format",
         "frequency": "Delivery frequency",
-        "budget": "Monthly food budget",
-        "subscription": "Open to a subscription"
+        "name": "Name",
+        "phone": "Phone"
       }
     },
     "step9": {

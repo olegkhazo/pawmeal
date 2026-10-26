@@ -1,11 +1,11 @@
 import { expect, test } from '@playwright/test'
 
-test('messenger buttons are hidden when business contacts are not configured', async ({ page }) => {
-  // .env.example / this dev server leaves BUSINESS_WHATSAPP_NUMBER and
-  // BUSINESS_TELEGRAM_USERNAME empty, so MessengerButtons must render nothing.
+test('the WhatsApp button, when configured, links to wa.me with a prefilled message', async ({ page }) => {
+  // BUSINESS_WHATSAPP_NUMBER may be empty (.env.example) — then no button renders at all.
   await page.goto('/ru/thank-you?leadId=test-lead-123&channel=whatsapp')
-  await expect(page.getByRole('link', { name: /WhatsApp/i })).toHaveCount(0)
-  await expect(page.getByRole('link', { name: /Telegram/i })).toHaveCount(0)
+  for (const link of await page.getByRole('link', { name: /WhatsApp/i }).all()) {
+    expect(await link.getAttribute('href')).toMatch(/^https:\/\/wa\.me\/\d+\?text=/)
+  }
   await expect(page.getByText('Номер заявки: test-lead-123')).toBeVisible()
 })
 

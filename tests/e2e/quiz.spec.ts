@@ -5,6 +5,17 @@ async function goToQuiz(page: import('@playwright/test').Page, query = '') {
   await page.waitForLoadState('networkidle')
 }
 
+async function goToFinalStep(page: import('@playwright/test').Page) {
+  await goToQuiz(page, '?species=dog')
+  await page.getByRole('button', { name: 'შემდეგი' }).click()
+  await page.getByRole('button', { name: 'თბილისი' }).click()
+  await page.getByRole('button', { name: 'შემდეგი' }).click()
+  await page.getByRole('button', { name: '1-დან 7 წლამდე' }).click()
+  await page.getByLabel('წონა, კგ').fill('18')
+  await page.getByRole('button', { name: 'ყოველკვირეულად' }).click()
+  await page.getByRole('button', { name: 'შემდეგი' }).click() // step 3 -> 4
+}
+
 test('species preselected from the landing CTA is reflected on step 1', async ({ page }) => {
   await goToQuiz(page, '?species=dog')
   await expect(page.getByRole('button', { name: 'ძაღლი', exact: true })).toHaveClass(/bg-brand-accent/)
@@ -46,63 +57,10 @@ test('weight validation rejects non-numeric and out-of-range values', async ({ p
   await expect(next).toBeDisabled()
 
   await weight.fill('18')
-  await expect(next).toBeEnabled()
-})
+  await expect(next).toBeDisabled() // delivery frequency is required too
 
-test('excluded-ingredients "none"/"unknown" are mutually exclusive with specific proteins', async ({ page }) => {
-  await goToQuiz(page, '?species=dog')
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-  await page.getByRole('button', { name: 'თბილისი' }).click()
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-  await page.getByRole('button', { name: '1-დან 7 წლამდე' }).click()
-  await page.getByLabel('წონა, კგ').fill('18')
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-  await page.getByRole('button', { name: 'საშუალო', exact: true }).click()
-  await page.getByRole('button', { name: 'მშრალი კორმი' }).click()
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-
-  // step 5: ingredient reactions
-  const chicken = page.getByRole('button', { name: 'ქათამი', exact: true })
-  const none = page.getByRole('button', { name: 'რეაქცია არ არის' })
-  await chicken.click()
-  await expect(chicken).toHaveAttribute('aria-pressed', 'true')
-  await none.click()
-  await expect(none).toHaveAttribute('aria-pressed', 'true')
-  await expect(chicken).toHaveAttribute('aria-pressed', 'false')
-})
-
-test('zero candidate recipes shows the consultation outcome, not an excluded product', async ({ page }) => {
-  await goToQuiz(page, '?species=cat')
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-  await page.getByRole('button', { name: 'თბილისი' }).click()
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-  await page.getByRole('button', { name: '1-დან 7 წლამდე' }).click()
-  await page.getByLabel('წონა, კგ').fill('4')
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-  await page.getByRole('button', { name: 'საშუალო', exact: true }).click()
-  await page.getByRole('button', { name: 'მშრალი კორმი' }).click()
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-
-  // exclude all three cat proteins: chicken, turkey, fish
-  await page.getByRole('button', { name: 'ქათამი', exact: true }).click()
-  await page.getByRole('button', { name: 'ინდაური', exact: true }).click()
-  await page.getByRole('button', { name: 'თევზი', exact: true }).click()
-  await page.getByRole('button', { name: 'არა', exact: true }).click() // specialDiet: no
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-
-  // step 6
-  await page.getByRole('button', { name: 'სრული რაციონი' }).click()
   await page.getByRole('button', { name: 'ყოველკვირეულად' }).click()
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-
-  // step 7
-  await page.getByLabel('არ ვიცი').check()
-  await page.getByRole('button', { name: 'დიახ', exact: true }).click()
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-
-  // step 8: should show "no matches" text, not any cat recipe chip
-  await expect(page.getByText('ამჟამინდელ კონცეფციებში')).toBeVisible()
-  await expect(page.locator('li', { hasText: 'კატებისთვის' })).toHaveCount(0)
+  await expect(next).toBeEnabled()
 })
 
 test('refreshing the page restores the draft including the current step', async ({ page }) => {
@@ -127,32 +85,38 @@ test('going back does not erase previously entered answers', async ({ page }) =>
 })
 
 test('the phone number is never written to sessionStorage', async ({ page }) => {
-  await goToQuiz(page, '?species=dog')
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-  await page.getByRole('button', { name: 'თბილისი' }).click()
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-  await page.getByRole('button', { name: '1-დან 7 წლამდე' }).click()
-  await page.getByLabel('წონა, კგ').fill('18')
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-  await page.getByRole('button', { name: 'საშუალო', exact: true }).click()
-  await page.getByRole('button', { name: 'მშრალი კორმი' }).click()
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-  await page.getByRole('button', { name: 'რეაქცია არ არის' }).click()
-  await page.getByRole('button', { name: 'არა', exact: true }).click()
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-  await page.getByRole('button', { name: 'სრული რაციონი' }).click()
-  await page.getByRole('button', { name: 'ყოველკვირეულად' }).click()
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-  await page.getByLabel('არ ვიცი').check()
-  await page.getByRole('button', { name: 'დიახ', exact: true }).click()
-  await page.getByRole('button', { name: 'შემდეგი' }).click()
-  await page.getByRole('button', { name: 'შემდეგი' }).click() // step 8 -> 9
+  await goToFinalStep(page)
 
   await page.getByLabel('ტელეფონი').fill('+995555123456')
   await page.waitForTimeout(100)
 
   const storageDump = await page.evaluate(() => JSON.stringify(window.sessionStorage))
   expect(storageDump).not.toContain('555123456')
+})
+
+test('the final step opens Telegram with the answers prefilled', async ({ page }) => {
+  await goToFinalStep(page)
+
+  const href = await page.getByRole('link', { name: 'მოგვწერეთ Telegram-ში' }).getAttribute('href')
+  const url = new URL(href!)
+  expect(url.hostname).toBe('t.me')
+  const text = url.searchParams.get('text') ?? ''
+  expect(text).toContain('თბილისი')
+  expect(text).toContain('ყოველკვირეულად')
+})
+
+test('the contact form requires a name and a valid phone before opening the mail client', async ({ page }) => {
+  await goToFinalStep(page)
+
+  await page.getByRole('button', { name: 'გაგზავნა' }).click()
+  await expect(page.getByText('შეავსეთ ეს ველი')).toBeVisible()
+  await expect(page.getByText('შეამოწმეთ ტელეფონის ნომერი')).toBeVisible()
+
+  await page.getByLabel('თქვენი სახელი').fill('Nino')
+  await page.getByLabel('ტელეფონი').fill('123')
+  await page.getByRole('button', { name: 'გაგზავნა' }).click()
+  await expect(page.getByText('შეავსეთ ეს ველი')).toHaveCount(0)
+  await expect(page.getByText('შეამოწმეთ ტელეფონის ნომერი')).toBeVisible()
 })
 
 test('switching language keeps the answers and current step', async ({ page }) => {

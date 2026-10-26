@@ -12,7 +12,7 @@ export type SubscriptionInterest = 'yes' | 'maybe' | 'no'
 export type PriceInterest = 'yes' | 'maybe' | 'no'
 export type PreferredChannel = 'whatsapp' | 'telegram' | 'call'
 
-export const QUIZ_STEP_COUNT = 9
+export const QUIZ_STEP_COUNT = 4
 
 // Everything here is non-personal and safe to persist in sessionStorage.
 // Contact-form fields (step 9) are intentionally a separate type — see
@@ -102,5 +102,5 @@ export interface QuizDraft {
 }
 
 export const QUIZ_DRAFT_STORAGE_KEY = 'pawmeal:quiz-draft'
-export const QUIZ_DRAFT_VERSION = 1
+export const QUIZ_DRAFT_VERSION = 2
 export const QUIZ_DRAFT_TTL_MS = 60 * 60 * 1000 // 60 minutes

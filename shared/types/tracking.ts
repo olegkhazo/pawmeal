@@ -21,4 +21,4 @@ export type TrackingEvent =
   | ({ name: 'price_interest_selected'; priceInterest: 'yes' | 'maybe' | 'no'; experimentVariant: string } & BaseFields)
   | ({ name: 'lead_submit_success'; cityId: string | null; planType: string | null } & BaseFields)
   | ({ name: 'lead_submit_error'; errorCode: string } & BaseFields)
-  | ({ name: 'messenger_clicked'; channel: 'whatsapp' | 'telegram' } & BaseFields)
+  | ({ name: 'messenger_clicked'; channel: 'whatsapp' | 'telegram' | 'email' } & BaseFields)

@@ -88,9 +88,6 @@ export default defineNuxtConfig({
       siteUrl: process.env.PUBLIC_SITE_URL || 'http://localhost:3000',
       businessWhatsappNumber: process.env.BUSINESS_WHATSAPP_NUMBER || '',
       businessTelegramUsername: process.env.BUSINESS_TELEGRAM_USERNAME || '',
-      // 'telegram': the quiz ends with a Telegram handoff instead of the contact
-      // form, so the site runs without a database. Anything else keeps the form.
-      leadCapture: process.env.LEAD_CAPTURE === 'telegram' ? 'telegram' : 'form',
       operatorContactEmail: process.env.OPERATOR_CONTACT_EMAIL || '',
       analyticsProvider: process.env.ANALYTICS_PROVIDER || 'none',
       // Shown on the privacy page so the stated retention period always
