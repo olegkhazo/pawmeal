@@ -39,7 +39,7 @@ const { t } = useI18n()
         v-if="showNext"
         type="button"
         :disabled="!canGoNext"
-        class="rounded-full bg-brand-accent px-5 py-2 text-sm font-medium text-white hover:bg-brand-accent-strong disabled:cursor-not-allowed disabled:opacity-50"
+        class="btn-cta px-6 py-2.5 text-sm disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
         @click="emit('next')"
       >
         {{ nextLabel || t('quiz.next') }}

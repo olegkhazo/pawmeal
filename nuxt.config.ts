@@ -55,7 +55,12 @@ export default defineNuxtConfig({
       // differentdog.com's headlines (their actual logo is a drawn SVG
       // mark, not styled text, so there's nothing to copy there; see
       // docs/image-prompts.md for the brief research note).
-      { name: 'Fraunces', provider: 'google', weights: [600, 700] },
+      // Also the heading face since the foodforjoe-style redesign.
+      { name: 'Fraunces', provider: 'google', weights: [500, 600, 700] },
+      // Georgian glyph fallback for Fraunces headings.
+      { name: 'Noto Serif Georgian', provider: 'google', weights: [500, 600, 700] },
+      // Hand-written accent lines (Latin + Cyrillic).
+      { name: 'Caveat', provider: 'google', weights: [500, 700] },
     ],
   },
 

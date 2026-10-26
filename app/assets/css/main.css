@@ -1,30 +1,48 @@
 @import "tailwindcss";
 
 /*
- * Brand tokens (Stage 1 foundation only — see .cursorrules.txt section 4):
- * warm light background, graphite text, a single green accent, soft cards.
- * Stage 2 will consume these tokens when building the real landing sections.
+ * Brand tokens. Palette modelled on foodforjoe.es (the owner's reference):
+ * deep forest-green text and bands, sunny yellow call-to-action pills, warm
+ * beige / cream grounds, and a few soft pastels (blush, sky, lime) for
+ * illustrated badges. Every component reads these tokens, so the whole site
+ * re-themes from here.
  */
 @theme {
-  --color-brand-bg: #fbf6ee;
-  --color-brand-surface: #ffffff;
-  --color-brand-text: #2e2c28;
-  --color-brand-text-muted: #6b675f;
-  --color-brand-accent: #3f7d52;
-  --color-brand-accent-strong: #2f5f3e;
-  --color-brand-border: #e7ddc9;
+  --color-brand-bg: #f8f3eb;
+  --color-brand-surface: #fffcf8;
+  --color-brand-text: #183f37;
+  --color-brand-text-muted: #4d635d;
+  /* Selected chips, secondary buttons, dark bands. */
+  --color-brand-accent: #183f37;
+  --color-brand-accent-strong: #0f2c26;
+  --color-brand-border: #e8dcc8;
 
-  /* A secondary warm-orange accent for sections that should stand out from
-     the surrounding ivory/green palette (e.g. testimonials) — kept soft so
-     it still reads as part of the same warm, muted brand palette. */
-  --color-brand-highlight: #fadfc0;
-  --color-brand-highlight-strong: #c06a1f;
+  /* Primary call-to-action: yellow pill with dark-green text. */
+  --color-brand-cta: #f4b221;
+  --color-brand-cta-strong: #e5a20f;
+
+  /* Soft accents for illustrated badges and alternating sections. */
+  --color-brand-cream: #fdf3de;
+  --color-brand-sand: #efe6d8;
+  --color-brand-blush: #ffdfd8;
+  --color-brand-salmon: #ff7c5f;
+  --color-brand-terracotta: #ba3314;
+  --color-brand-sky: #e0edf5;
+  --color-brand-lime: #d2da78;
+
+  /* Kept for sections that used the earlier warm highlight (testimonials). */
+  --color-brand-highlight: #ffdfd8;
+  --color-brand-highlight-strong: #ba3314;
 
   --font-sans-ka: "Noto Sans Georgian", "Noto Sans", system-ui, sans-serif;
   --font-sans-default: "Noto Sans", system-ui, sans-serif;
-  /* Wordmark only — the "PawMeal" text in the header. Not used for body
-     text or Georgian (Fraunces has no Georgian glyph coverage). */
-  --font-logo: "Fraunces", Georgia, "Noto Serif", serif;
+  /* Wordmark + headings. Fraunces has no Georgian glyphs, so Georgian
+     headings fall through to Noto Serif Georgian glyph by glyph. */
+  --font-logo: "Fraunces", "Noto Serif Georgian", Georgia, serif;
+  --font-heading: "Fraunces", "Noto Serif Georgian", Georgia, serif;
+  /* Hand-written accent lines (eyebrows, small notes). No Georgian
+     coverage either — falls back to the Georgian sans. */
+  --font-hand: "Caveat", "Noto Sans Georgian", cursive;
 }
 
 html,
@@ -36,6 +54,48 @@ body {
 
 :lang(ka) {
   font-family: var(--font-sans-ka);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Primary call-to-action pill: yellow, dark-green text, a little "pressed" shadow. */
+@layer components {
+  .btn-cta {
+    @apply inline-block rounded-full bg-brand-cta px-7 py-3.5 text-center text-base font-semibold text-brand-text shadow-[0_3px_0_var(--color-brand-accent-strong)] transition hover:-translate-y-0.5 hover:bg-brand-cta-strong;
+  }
+}
+
+/* Hand-drawn wavy underline for section headings: <h2 class="squiggle">. */
+.squiggle {
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+.squiggle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 7rem;
+  height: 0.6rem;
+  transform: translateX(-50%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 112 10'%3E%3Cpath d='M2 6c9-6 17 4 26 0s17-6 26 0 17 4 26 0 17-6 26 0' fill='none' stroke='%23f4b221' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+.squiggle-left::after {
+  left: 0;
+  transform: none;
+}
+@media (min-width: 1024px) {
+  .lg\:squiggle-left::after {
+    left: 0;
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

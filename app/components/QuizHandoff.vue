@@ -95,7 +95,7 @@ function submitByEmail() {
       :href="telegramHref"
       target="_blank"
       rel="noopener noreferrer"
-      class="rounded-full bg-brand-accent px-6 py-3 text-center text-sm font-medium text-white hover:bg-brand-accent-strong"
+      class="btn-cta"
       @click="onChatClick('telegram')"
     >
       {{ t('quiz.handoff.telegramButton') }}
@@ -105,7 +105,7 @@ function submitByEmail() {
       :href="whatsappHref"
       target="_blank"
       rel="noopener noreferrer"
-      class="rounded-full bg-brand-accent px-6 py-3 text-center text-sm font-medium text-white hover:bg-brand-accent-strong"
+      class="rounded-full bg-brand-accent px-7 py-3.5 text-center text-base font-semibold text-white transition hover:-translate-y-0.5 hover:bg-brand-accent-strong"
       @click="onChatClick('whatsapp')"
     >
       {{ t('quiz.handoff.whatsappButton') }}
@@ -121,11 +121,11 @@ function submitByEmail() {
 
     <form
       v-if="operatorEmail"
-      class="mt-4 flex flex-col gap-3 border-t border-brand-border pt-6"
+      class="mt-4 flex flex-col gap-3 border-t-2 border-dashed border-brand-border pt-6"
       novalidate
       @submit.prevent="submitByEmail"
     >
-      <h3 class="font-semibold text-brand-text">{{ t('quiz.handoff.orLeaveContacts') }}</h3>
+      <h3 class="text-lg text-brand-text">{{ t('quiz.handoff.orLeaveContacts') }}</h3>
       <label class="flex flex-col gap-1 text-sm text-brand-text">
         {{ t('quiz.handoff.name') }}
         <input
@@ -153,7 +153,7 @@ function submitByEmail() {
       </label>
       <button
         type="submit"
-        class="rounded-full border border-brand-accent px-6 py-3 text-sm font-medium text-brand-accent hover:bg-brand-accent hover:text-white"
+        class="rounded-full border-2 border-brand-accent px-6 py-3 text-sm font-semibold text-brand-accent transition hover:bg-brand-accent hover:text-white"
       >
         {{ t('quiz.handoff.submit') }}
       </button>

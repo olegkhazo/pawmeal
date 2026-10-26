@@ -18,14 +18,14 @@ function onSelect(species: Species) {
   <div class="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
     <NuxtLink
       :to="quizLink('dog')"
-      class="rounded-full bg-brand-accent px-6 py-3 text-center text-sm font-medium text-white hover:bg-brand-accent-strong"
+      class="btn-cta"
       @click="onSelect('dog')"
     >
       {{ t('home.hero.speciesDog') }}
     </NuxtLink>
     <NuxtLink
       :to="quizLink('cat')"
-      class="rounded-full border border-brand-accent px-6 py-3 text-center text-sm font-medium text-brand-accent hover:bg-brand-accent hover:text-white"
+      class="rounded-full border-2 border-brand-accent bg-brand-surface px-7 py-3.5 text-center text-base font-semibold text-brand-accent transition hover:-translate-y-0.5 hover:bg-brand-accent hover:text-white"
       @click="onSelect('cat')"
     >
       {{ t('home.hero.speciesCat') }}

@@ -16,12 +16,12 @@ function scrollByCard(direction: 1 | -1) {
 </script>
 
 <template>
-  <section class="bg-brand-highlight py-12">
+  <section class="bg-brand-blush py-14">
     <div class="mx-auto max-w-5xl px-4">
-      <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-brand-highlight-strong">
+      <p class="text-center font-hand text-3xl text-brand-terracotta">
         {{ t('home.testimonials.eyebrow') }}
       </p>
-      <h2 class="mt-1 text-center text-2xl font-semibold text-brand-text sm:text-3xl">
+      <h2 class="mt-1 text-center text-3xl text-brand-text sm:text-4xl">
         {{ t('home.testimonials.title') }}
       </h2>
 
@@ -44,14 +44,15 @@ function scrollByCard(direction: 1 | -1) {
           <figure
             v-for="index in itemCount"
             :key="index"
-            class="flex w-[85%] shrink-0 snap-start flex-col gap-4 rounded-2xl border border-brand-border bg-brand-surface p-6 sm:w-[45%] lg:w-[31%]"
+            class="flex w-[85%] shrink-0 snap-start flex-col gap-4 rounded-[1.75rem] border-2 border-brand-accent bg-brand-surface p-6 sm:w-[45%] lg:w-[31%]"
           >
+            <span class="text-lg tracking-widest text-brand-cta" aria-hidden="true">★★★★★</span>
             <blockquote class="text-sm text-brand-text">
               {{ t(`home.testimonials.items.${index - 1}.quote`) }}
             </blockquote>
             <figcaption class="mt-auto flex items-center gap-3">
               <span
-                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-highlight-strong text-sm font-semibold text-white"
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-salmon font-heading text-sm font-bold text-white"
                 aria-hidden="true"
               >
                 {{ initials(t(`home.testimonials.items.${index - 1}.name`)) }}

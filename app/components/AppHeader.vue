@@ -17,9 +17,9 @@ const homeAnchor = (hash: string) => `${localePath('/')}#${hash}`
       </NuxtLink>
 
       <nav class="hidden items-center gap-6 text-sm text-brand-text sm:flex" aria-label="primary">
-        <a :href="homeAnchor('how-it-works')">{{ t('nav.howItWorks') }}</a>
-        <a :href="homeAnchor('menu')">{{ t('nav.menu') }}</a>
-        <a :href="homeAnchor('faq')">{{ t('nav.faq') }}</a>
+        <a :href="homeAnchor('how-it-works')" class="hover:text-brand-terracotta">{{ t('nav.howItWorks') }}</a>
+        <a :href="homeAnchor('menu')" class="hover:text-brand-terracotta">{{ t('nav.menu') }}</a>
+        <a :href="homeAnchor('faq')" class="hover:text-brand-terracotta">{{ t('nav.faq') }}</a>
       </nav>
 
       <div class="flex flex-wrap items-center gap-2">
@@ -36,7 +36,7 @@ const homeAnchor = (hash: string) => `${localePath('/')}#${hash}`
 
         <NuxtLink
           :to="localePath('/quiz')"
-          class="rounded-full bg-brand-accent px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-accent-strong"
+          class="rounded-full bg-brand-cta px-4 py-1.5 text-sm font-semibold text-brand-text shadow-[0_2px_0_#183f37] transition hover:-translate-y-0.5 hover:bg-brand-cta-strong"
         >
           {{ t('nav.cta') }}
         </NuxtLink>

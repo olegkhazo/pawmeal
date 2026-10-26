@@ -27,7 +27,7 @@ function pouchPath(x: number, y: number, h: number) {
     <div
       class="grid overflow-hidden rounded-3xl bg-brand-accent-strong text-white shadow-md md:grid-cols-2"
     >
-      <div class="flex items-center justify-center bg-[#e8f0ec] p-6 sm:p-8">
+      <div class="flex items-center justify-center bg-brand-sky p-6 sm:p-8">
         <svg
           viewBox="0 0 400 330"
           class="h-auto w-full max-w-sm"
@@ -106,7 +106,7 @@ function pouchPath(x: number, y: number, h: number) {
         <ul class="mt-6 space-y-5">
           <li v-for="index in pointCount" :key="index" class="flex gap-3">
             <span
-              class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-highlight text-xs font-semibold text-brand-text"
+              class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-cta text-xs font-semibold text-brand-text"
               aria-hidden="true"
             >
               {{ index }}

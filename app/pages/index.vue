@@ -10,6 +10,11 @@ const { track } = useTracking()
 onMounted(() => track({ name: 'landing_view', locale: locale.value }))
 
 const valueItemCount = (tm('home.value.items') as unknown[]).length
+const valueIcons = [
+  { icon: 'pouch', tint: '#fdf3de' },
+  { icon: 'bowl', tint: '#ffdfd8' },
+  { icon: 'truck', tint: '#e0edf5' },
+] as const
 
 type Filter = 'all' | Species
 const filter = ref<Filter>('all')
@@ -29,22 +34,21 @@ const filters: { value: Filter; labelKey: string }[] = [
   <div>
     <HeroSection />
 
-    <section class="mx-auto max-w-5xl px-4 py-10">
-      <ul class="grid gap-4 sm:grid-cols-3">
-        <li
-          v-for="index in valueItemCount"
-          :key="index"
-          class="rounded-2xl border border-brand-border bg-brand-surface p-5 text-center text-sm text-brand-text"
-        >
-          {{ t(`home.value.items.${index - 1}`) }}
+    <section class="bg-brand-accent py-12 text-white">
+      <ul class="mx-auto grid max-w-5xl gap-8 px-4 sm:grid-cols-3">
+        <li v-for="index in valueItemCount" :key="index" class="flex flex-col items-center gap-4 text-center">
+          <span class="block h-24 w-24 transition hover:rotate-6">
+            <DoodleBadge v-bind="valueIcons[(index - 1) % valueIcons.length]!" />
+          </span>
+          <span class="max-w-xs text-sm leading-relaxed text-white/90">{{ t(`home.value.items.${index - 1}`) }}</span>
         </li>
       </ul>
     </section>
 
     <HowItWorks />
 
-    <section id="menu" class="mx-auto max-w-5xl px-4 py-12">
-      <h2 class="text-center text-2xl font-semibold text-brand-text sm:text-3xl">
+    <section id="menu" class="mx-auto max-w-5xl px-4 py-14">
+      <h2 class="squiggle text-center text-3xl text-brand-text sm:text-4xl">
         {{ t('home.catalog.title') }}
       </h2>
       <div class="mt-6 flex flex-wrap justify-center gap-2" role="group" :aria-label="t('home.catalog.title')">
@@ -54,7 +58,7 @@ const filters: { value: Filter; labelKey: string }[] = [
           type="button"
           :data-testid="`filter-${f.value}`"
           :aria-pressed="filter === f.value"
-          class="rounded-full border px-4 py-2 text-sm font-medium"
+          class="rounded-full border-2 px-5 py-2 text-sm font-semibold transition"
           :class="
             filter === f.value
               ? 'border-brand-accent bg-brand-accent text-white'
@@ -71,16 +75,19 @@ const filters: { value: Filter; labelKey: string }[] = [
       </div>
     </section>
 
-    <section class="mx-auto max-w-5xl px-4 py-12">
-      <div class="mx-auto flex max-w-2xl flex-col items-center gap-4 rounded-3xl border border-brand-accent/30 bg-brand-surface p-8 text-center shadow-sm sm:p-10">
-        <h2 class="text-2xl font-semibold text-brand-text sm:text-3xl">
+    <section class="bg-brand-cream py-14">
+      <div class="relative mx-auto flex max-w-2xl flex-col items-center gap-4 rounded-[2rem] border-2 border-brand-accent bg-brand-surface p-8 text-center shadow-[6px_6px_0_#183f37] sm:p-10">
+        <span class="absolute -top-10 left-1/2 block h-20 w-20 -translate-x-1/2 rotate-[-8deg]">
+          <DoodleBadge icon="paw" tint="#d2da78" />
+        </span>
+        <h2 class="mt-6 text-3xl text-brand-text sm:text-4xl">
           {{ t('home.subscription.title') }}
         </h2>
         <p class="text-brand-text-muted">{{ t('home.subscription.body') }}</p>
         <p class="text-brand-text-muted">{{ t('home.subscription.body2') }}</p>
         <NuxtLink
           :to="localePath('/quiz')"
-          class="mt-2 inline-block rounded-full bg-brand-accent px-6 py-3 text-sm font-medium text-white hover:bg-brand-accent-strong"
+          class="btn-cta mt-2"
         >
           {{ t('home.subscription.button') }}
         </NuxtLink>
@@ -93,16 +100,21 @@ const filters: { value: Filter; labelKey: string }[] = [
 
     <TestimonialsSection />
 
-    <section class="mx-auto max-w-2xl px-4 py-16 text-center">
-      <h2 class="text-2xl font-semibold text-brand-text sm:text-3xl">
-        {{ t('home.finalCta.title') }}
-      </h2>
-      <NuxtLink
-        :to="localePath('/quiz')"
-        class="mt-6 inline-block rounded-full bg-brand-accent px-6 py-3 text-sm font-medium text-white hover:bg-brand-accent-strong"
-      >
-        {{ t('home.finalCta.button') }}
-      </NuxtLink>
+    <section class="bg-brand-accent px-4 py-16 text-center text-white">
+      <div class="mx-auto flex max-w-2xl flex-col items-center">
+        <span class="block h-20 w-20 rotate-6">
+          <DoodleBadge icon="bowl" tint="#fdf3de" />
+        </span>
+        <h2 class="mt-4 text-3xl sm:text-4xl">
+          {{ t('home.finalCta.title') }}
+        </h2>
+        <NuxtLink
+          :to="localePath('/quiz')"
+          class="btn-cta mt-8"
+        >
+          {{ t('home.finalCta.button') }}
+        </NuxtLink>
+      </div>
     </section>
   </div>
 </template>
